@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { filterNews } from "./utilities/filterNews";
 import { useNewsData } from "./useNewsData";
 
 function TopNews() {
-  const [news, setnews] = useState({});
+  const [news1, setNews] = useState({});
+  const [category, setCategory] = useState("world");
+
   const { data, isLoading, isError, error } = useNewsData();
 
   if (isLoading) return "Loading...";
@@ -11,9 +13,23 @@ function TopNews() {
   const {
     data: { results },
   } = data;
-  console.log(results);
 
-  return <div>TopNews</div>;
+  const newsFiltered = filterNews(results, category);
+
+  return (
+    <div>
+      {newsFiltered.map((news) => {
+        return (
+          <div key={news.created_date}>
+            <h1>{news.title}</h1>
+            <img src={news.multimedia[0].url} alt="somting" />
+            <p>{news.abstract}</p>
+          </div>
+        );
+      })}
+      TopNews
+    </div>
+  );
 }
 
 export default TopNews;
