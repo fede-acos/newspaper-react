@@ -3,7 +3,7 @@ import { filterNews } from "./utilities/filterNews";
 import { useNewsData } from "./useNewsData";
 
 function TopNews() {
-  const [news1, setNews] = useState({});
+  const [news1, setNews] = useState([]);
   const [category, setCategory] = useState("world");
 
   const { data, isLoading, isError, error } = useNewsData();
@@ -15,7 +15,10 @@ function TopNews() {
   } = data;
 
   const newsFiltered = filterNews(results, category);
-
+  /* useEffect(() => {
+    const asd = newsFiltered[0];
+  }, [newsFiltered]);
+ */
   return (
     <div>
       {newsFiltered.map((news) => {
