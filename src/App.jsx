@@ -1,24 +1,23 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import React, { useState, createContext, useContext } from "react";
 import "./App.css";
-import { useNewsData } from "./componets/useNewsData";
 import TopNews from "./componets/TopNews";
+import Navbar from "./componets/Navbar";
+
+const CategoryContext = createContext("world");
 
 function App() {
-  /*  const { data, isLoading, isError, error } = useNewsData();
-  const [count, setCount] = useState(0);
-
-  if (isLoading) return "loading";
-  const {
-    data: { results },
-  } = data;
-  console.log(results); */
+  const [category, setCategory] = useState("world");
 
   return (
     <div className="App">
-      <TopNews></TopNews>
+      <CategoryContext.Provider value={{ category, setCategory }}>
+        <Navbar />
+        <TopNews />
+      </CategoryContext.Provider>
     </div>
   );
 }
-
+export function useCategoryContext() {
+  return useContext(CategoryContext);
+}
 export default App;
