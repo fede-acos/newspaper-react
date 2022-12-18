@@ -6,7 +6,9 @@ const Navbar = () => {
     <nav>
       <ul>
         <li>
-          <a href="#">World</a>
+          <a href="#" onClick={() => setCategory("world")}>
+            World
+          </a>
         </li>
         <li>
           <a href="#" onClick={() => setCategory("politics")}>

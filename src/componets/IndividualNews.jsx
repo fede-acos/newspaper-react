@@ -1,14 +1,11 @@
 import React from "react";
 import { filterNews } from "./utilities/filterNews";
 
-function IndividualNews(
-  {
-    data: {
-      data: { results },
-    },
+function IndividualNews({
+  data: {
+    data: { results },
   },
-  { category }
-) {
+}) {
   return (
     <div>
       {results &&
@@ -16,7 +13,6 @@ function IndividualNews(
           return (
             <div key={news.url}>
               <h1>{news.title}</h1>
-              <h2>{category}</h2>
               <img src={news.multimedia[0].url} alt="somting" />
               <p>{news.abstract}</p>
             </div>

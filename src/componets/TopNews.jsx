@@ -7,7 +7,7 @@ function TopNews({ category }) {
 
   return (
     <div>
-      {!isLoading && <IndividualNews data={data} category={category} />}
+      {!isLoading && <IndividualNews data={data} />}
       TopNews
     </div>
   );
