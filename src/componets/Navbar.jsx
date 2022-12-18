@@ -1,7 +1,6 @@
 import React from "react";
 const Navbar = ({ setCategory }) => {
-  /*   const { setCategory, category } = useCategoryContext();
-   */ return (
+  return (
     <nav>
       <ul>
         <li>
