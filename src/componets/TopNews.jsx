@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNewsData } from "./useNewsData";
 import IndividualNews from "./IndividualNews";
-import { useCategoryContext } from "../App";
 
-function TopNews() {
-  const { category } = useCategoryContext();
+function TopNews({ category }) {
   const { data, isLoading } = useNewsData(category);
-  console.log(category);
 
   return (
     <div>
-      {!isLoading && <IndividualNews data={data} />}
+      {!isLoading && <IndividualNews data={data} category={category} />}
       TopNews
     </div>
   );

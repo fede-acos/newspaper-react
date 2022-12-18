@@ -11,6 +11,7 @@ const fetchNews = (section) => {
 export function useNewsData(section = "world") {
   const { data, error, isLoading, isError } = useQuery(["api"], async () => {
     const response = await fetchNews(section);
+    console.log(section);
     return response;
   });
 
