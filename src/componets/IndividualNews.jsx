@@ -1,15 +1,21 @@
-import React from "react";
-import { filterNews } from "./utilities/filterNews";
+import React, { useEffect } from "react";
+import { filterEmptyNews, selectMainArticle } from "./utilities/filterNews";
 
 function IndividualNews({
   data: {
     data: { results },
   },
 }) {
+  const mainArticle = selectMainArticle(results);
+  const newsArray = filterEmptyNews(results)?.map((news) => {
+    if (news === mainArticle) return;
+  });
+
   return (
     <div>
       {results &&
-        filterNews(results).map((news) => {
+        filterEmptyNews(results).map((news) => {
+          if (news === mainArticle) return;
           return (
             <div key={news.url}>
               <h1>{news.title}</h1>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNewsData } from "./useNewsData";
+import { useNewsData } from "./hooks/useNewsData";
 import IndividualNews from "./IndividualNews";
 
 function TopNews({ category }) {

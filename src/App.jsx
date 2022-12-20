@@ -5,7 +5,7 @@ import Navbar from "./componets/Navbar";
 
 function App() {
   const [category, setCategory] = useState("world");
-  console.log(category);
+
   return (
     <div className="App">
       <Navbar setCategory={setCategory} />
