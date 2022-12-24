@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { filterEmptyNews, selectMainArticle } from "./utilities/filterNews";
 import { useDispatch } from "react-redux";
 import { saveNews } from "../features/news/newsSlice";
+import { useGetNews } from "../api/apiSlice";
 
 function IndividualNews({
   data: {
@@ -10,19 +11,17 @@ function IndividualNews({
 }) {
   const dispatch = useDispatch();
 
+  console.log(useGetNews);
+
   const mainArticle = selectMainArticle(results);
-  const newsArray = filterEmptyNews(results)?.map((news) => {
-    if (news === mainArticle) return;
-  });
-  console.log(mainArticle);
-  if (newsArray) {
-    dispatch(saveNews(mainArticle));
-  }
+  const newsWithImages = filterEmptyNews(results);
+
+  newsWithImages && dispatch(saveNews(newsWithImages));
 
   return (
     <div>
       {results &&
-        filterEmptyNews(results).map((news) => {
+        newsWithImages.map((news) => {
           if (news === mainArticle) return;
           return (
             <div key={news.url}>
