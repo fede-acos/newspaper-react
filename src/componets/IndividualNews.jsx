@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { filterEmptyNews, selectMainArticle } from "./utilities/filterNews";
 import { useDispatch } from "react-redux";
 import { saveNews } from "../features/news/newsSlice";
-import { useGetNews } from "../api/apiSlice";
+import { useGetNewsQuery } from "../api/apiSlice";
 
 function IndividualNews({
   data: {
@@ -11,7 +11,7 @@ function IndividualNews({
 }) {
   const dispatch = useDispatch();
 
-  console.log(useGetNews);
+  /* usar este hook para replazar el react query const { data } = useGetNewsQuery("world"); */
 
   const mainArticle = selectMainArticle(results);
   const newsWithImages = filterEmptyNews(results);

@@ -14,4 +14,5 @@ export const apiSlice = createApi({
   }),
 });
 
-export const { useGetNews } = apiSlice;
+export const { useGetNewsQuery } = apiSlice;
+console.log(apiSlice);
