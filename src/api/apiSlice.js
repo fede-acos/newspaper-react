@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
+import { filterEmptyNews } from "../componets/utilities/filterNews";
 const API_KEY = "api-key=0gXtaZrp8R4zWDtkUXoV7M5teGuME70i";
 
 export const apiSlice = createApi({
@@ -11,6 +11,9 @@ export const apiSlice = createApi({
     getNews: builder.query({
       query: (section = "world") => `/${section}.json?${API_KEY}`,
     }),
+    transformResponse: (response) => {
+      return filterEmptyNews(response.results);
+    },
   }),
 });
 

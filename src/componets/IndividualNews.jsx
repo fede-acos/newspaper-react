@@ -11,7 +11,8 @@ function IndividualNews({
 }) {
   const dispatch = useDispatch();
 
-  /* usar este hook para replazar el react query const { data } = useGetNewsQuery("world"); */
+  const { data: asd, isLoading } = useGetNewsQuery("world");
+  !isLoading && console.log(asd);
 
   const mainArticle = selectMainArticle(results);
   const newsWithImages = filterEmptyNews(results);
