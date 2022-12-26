@@ -21,9 +21,8 @@ function MainArticle() {
   }, [data]);
 
   if (isLoading) return <div>Loading.....</div>;
-  const news = newsState.mainNews.multimedia[0].url;
-  console.log(news);
-  return <div></div>;
+  const news = newsState.mainNews;
+  return <> {news.multimedia && <IndividualNews news={news} />}</>;
 }
 
 export default MainArticle;

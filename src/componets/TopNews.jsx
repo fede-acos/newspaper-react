@@ -4,13 +4,17 @@ import { useSelector } from "react-redux";
 
 function TopNews() {
   const {
-    newsState: { news },
+    newsState: { news, mainNews },
   } = useSelector((state) => state.news);
+
+  console.log(mainNews);
 
   return (
     <div>
       {news?.map((news) => {
-        return <IndividualNews key={news.url} news={news} />;
+        if (news !== mainNews) {
+          return <IndividualNews key={news.url} news={news} />;
+        }
       })}
     </div>
   );

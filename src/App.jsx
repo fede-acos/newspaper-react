@@ -7,8 +7,9 @@ import MainArticle from "./componets/MainArticle";
 function App() {
   return (
     <div className="App">
-      <MainArticle />
       <Navbar />
+      <MainArticle />
+
       <TopNews />
     </div>
   );
