@@ -11,6 +11,7 @@ export const apiSlice = createApi({
     getNews: builder.query({
       query: (section = "world") => `/${section}.json?${API_KEY}`,
     }),
+    provideTags: ["News"],
     transformResponse: (response) => {
       return filterEmptyNews(response.results);
     },
@@ -18,4 +19,3 @@ export const apiSlice = createApi({
 });
 
 export const { useGetNewsQuery } = apiSlice;
-console.log(apiSlice);

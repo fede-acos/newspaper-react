@@ -9,13 +9,14 @@ export const sectionSlice = createSlice({
   initialState,
   reducers: {
     saveSection: (state, action) => {
-      state = action.payload;
+      state.section = action.payload;
     },
     resetSection: (state) => {
-      state = initialState.section;
+      state = "world";
     },
   },
 });
 
-export const { saveSection, resetSection } = sectionSlice;
+export const { saveSection, resetSection } = sectionSlice.actions;
+
 export default sectionSlice.reducer;

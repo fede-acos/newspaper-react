@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  news: {},
+  newsState: {
+    news: [],
+    mainNews: {},
+  },
 };
 
 export const newsSlice = createSlice({
@@ -9,7 +12,7 @@ export const newsSlice = createSlice({
   initialState,
   reducers: {
     saveNews: (state, action) => {
-      state = action.payload;
+      state.newsState = action.payload;
     },
     resetNews: (state) => {
       state = {};

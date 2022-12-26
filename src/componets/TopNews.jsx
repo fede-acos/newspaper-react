@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { useNewsData } from "./hooks/useNewsData";
+import React from "react";
 import IndividualNews from "./IndividualNews";
+import { useSelector } from "react-redux";
 
-function TopNews({ category, data, isLoading }) {
+function TopNews() {
+  const {
+    newsState: { news },
+  } = useSelector((state) => state.news);
+
   return (
     <div>
-      {!isLoading && <IndividualNews data={data} />}
-      TopNews
+      {news?.map((news) => {
+        return <IndividualNews key={news.url} news={news} />;
+      })}
     </div>
   );
 }

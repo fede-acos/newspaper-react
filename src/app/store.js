@@ -6,9 +6,9 @@ import sectionSlice from "../features/section/sectionSlice";
 
 export const store = configureStore({
   reducer: {
+    section: sectionSlice,
     news: newsSlice,
     [apiSlice.reducerPath]: apiSlice.reducer,
-    section: sectionSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),

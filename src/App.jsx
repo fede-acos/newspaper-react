@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import TopNews from "./componets/TopNews";
 import Navbar from "./componets/Navbar";
-import { useNewsData } from "./componets/hooks/useNewsData";
+import MainArticle from "./componets/MainArticle";
 
 function App() {
-  const [category, setCategory] = useState("world");
-  const { data, isLoading } = useNewsData(category);
-
   return (
     <div className="App">
-      <Navbar setCategory={setCategory} />
-      <TopNews category={category} data={data} isLoading={isLoading} />
+      <MainArticle />
+      <Navbar />
+      <TopNews />
     </div>
   );
 }
