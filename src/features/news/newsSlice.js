@@ -24,7 +24,6 @@ export const newsSlice = createSlice({
       const filteredNews = filterEmptyNews(action.payload.news);
       const mainNews = selectMainArticle(filteredNews);
       const sideNews = sideNewsArray(filteredNews, mainNews);
-      console.log(sideNews);
       const relatedNews = createRelatedNewsarrays(
         filteredNews,
         sideNews,
