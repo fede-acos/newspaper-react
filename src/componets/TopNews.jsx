@@ -12,8 +12,6 @@ function TopNews() {
 
   const { data, isLoading } = useGetNewsQuery(section);
 
-  console.log(data.results);
-
   useEffect(() => {
     if (!isLoading) {
       const filteredNews = filterEmptyNews(data.results);
@@ -25,8 +23,6 @@ function TopNews() {
   const {
     newsState: { news, mainNews },
   } = useSelector((state) => state.news);
-
-  console.log(mainNews);
 
   const dispatch = useDispatch();
 
