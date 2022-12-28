@@ -5,7 +5,7 @@ import {
 } from "../../componets/utilities/filterNews";
 
 import { sideNewsArray } from "../../componets/utilities/createSideNewsArray";
-import { createRelatedNewsarrays } from "../../componets/utilities/createRelatedNewsArray";
+import { paginate } from "../../componets/utilities/createRelatedNewsArray";
 
 const initialState = {
   newsState: {
@@ -24,11 +24,7 @@ export const newsSlice = createSlice({
       const filteredNews = filterEmptyNews(action.payload.news);
       const mainNews = selectMainArticle(filteredNews);
       const sideNews = sideNewsArray(filteredNews, mainNews);
-      const relatedNews = createRelatedNewsarrays(
-        filteredNews,
-        sideNews,
-        mainNews
-      );
+      const relatedNews = paginate(filteredNews, 1, sideNews, mainNews);
 
       state.newsState.sideNews = sideNews;
       state.newsState.news = filteredNews;
