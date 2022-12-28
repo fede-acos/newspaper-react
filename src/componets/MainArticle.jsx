@@ -7,9 +7,6 @@ function MainArticle() {
 
   const news = newsState.mainNews;
   const sideNews = newsState.relatedNews;
-  const page = 1;
-
-  console.log(object);
 
   return <> {news.multimedia && <IndividualNews news={news} />}</>;
 }
