@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { saveSection, resetSection } from "../features/section/sectionSlice";
+import { saveSection } from "../features/section/sectionSlice";
 
 const Navbar = () => {
   const dispatch = useDispatch();

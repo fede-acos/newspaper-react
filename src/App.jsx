@@ -3,6 +3,7 @@ import "./App.css";
 import TopNews from "./componets/TopNews";
 import Navbar from "./componets/Navbar";
 import MainArticle from "./componets/MainArticle";
+import RelatedNews from "./componets/RelatedNews";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Navbar />
 
       <TopNews />
+      <RelatedNews />
     </div>
   );
 }

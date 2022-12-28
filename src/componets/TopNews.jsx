@@ -14,9 +14,7 @@ function TopNews() {
 
   useEffect(() => {
     if (!isLoading) {
-      const filteredNews = filterEmptyNews(data.results);
-      const mainNews = selectMainArticle(filteredNews);
-      dispatch(saveNews({ news: filteredNews, mainNews: mainNews }));
+      dispatch(saveNews({ news: data.results }));
     }
   }, [data]);
 
@@ -31,11 +29,11 @@ function TopNews() {
   return (
     <>
       <MainArticle />
-      {news?.map((news) => {
+      {/*       {news?.map((news) => {
         if (news !== mainNews) {
           return <IndividualNews key={news.url} news={news} />;
         }
-      })}
+      })} */}
     </>
   );
 }
