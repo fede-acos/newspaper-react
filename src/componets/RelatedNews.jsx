@@ -8,11 +8,8 @@ function RelatedNews() {
   const [relatedNews, setRelatedNews] = useState([]);
 
   const { news, mainNews, sideNews } = useSelector((state) => state.news);
-  const [localSection, setLocalSection] = useState("world");
 
   const [page, setPage] = useState(1);
-
-  console.log(relatedNews);
 
   const { paginatedNews, numberOfPages } = paginate(
     news,
@@ -23,20 +20,21 @@ function RelatedNews() {
 
   useEffect(() => {
     setPage(1);
-    if (section === localSection) {
-      setRelatedNews(...[], ...paginatedNews);
-      return;
-    }
-    setRelatedNews([]);
-    setLocalSection(section);
+    setRelatedNews(paginatedNews);
+    console.log(1);
   }, [section]);
 
   useEffect(() => {
-    if (relatedNews.some((element) => paginatedNews.includes(element))) return;
-    console.log("re render");
+    console.log(2);
 
+    if (page <= 1) return;
+    if (relatedNews.some((element) => paginatedNews.includes(element))) return;
     setRelatedNews([...relatedNews, ...paginatedNews]);
-  }, [page, news]);
+  }, [page]);
+
+  if (relatedNews.length === 0 && paginatedNews.length >= 1) {
+    setRelatedNews(paginatedNews);
+  }
 
   return (
     <div>
@@ -44,7 +42,6 @@ function RelatedNews() {
         relatedNews?.map((news) => {
           return <IndividualNews key={news.url} news={news} />;
         })}
-      {console.log(section)}
       <button
         onClick={() => setPage((prevPage) => prevPage + 1)}
         disabled={page >= numberOfPages}
