@@ -33,7 +33,7 @@ function RelatedNews() {
   }, [page]);
 
   if (relatedNews.length === 0 && paginatedNews.length >= 1) {
-    setRelatedNews(paginatedNews);
+    setRelatedNews(paginatedNews); //render the news in the first render
   }
 
   return (
