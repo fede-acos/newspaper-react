@@ -11,12 +11,14 @@ function RelatedNews() {
 
   const [page, setPage] = useState(1);
 
+  const paginatedNews = paginate(news, page, sideNews, mainNews);
+
   useEffect(() => {
-    const paginatedNews = paginate(news, page, sideNews, mainNews);
     if (relatedNews.some((element) => paginatedNews.includes(element))) return;
     setRelatedNews([...relatedNews, ...paginatedNews]);
-  }, [page, news, mainNews, sideNews]);
+  }, [page]);
 
+  console.log(relatedNews);
   return (
     <div>
       {relatedNews &&
