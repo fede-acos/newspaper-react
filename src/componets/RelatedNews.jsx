@@ -7,7 +7,9 @@ function RelatedNews() {
 
   const [relatedNews, setRelatedNews] = useState([]);
 
-  const { news, mainNews, sideNews } = useSelector((state) => state.news);
+  const { news, mainNews, sideNews } = useSelector(
+    (state) => state.news.newsState
+  );
 
   const [page, setPage] = useState(1);
 

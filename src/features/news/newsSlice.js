@@ -8,10 +8,7 @@ import { paginate } from "../../componets/utilities/createRelatedNewsArray";
 import { sideNewsArray } from "../../componets/utilities/createSideNewsArray";
 
 const initialState = {
-  news: [],
-  mainNews: {},
-  sideNews: [],
-  resetNews: [],
+  newsState: { news: [], mainNews: {}, sideNews: [] },
 };
 
 export const newsSlice = createSlice({
@@ -19,20 +16,18 @@ export const newsSlice = createSlice({
   initialState,
   reducers: {
     saveNews: (state, action) => {
-      state.news = filterEmptyNews(action.payload.news);
-    },
-    saveMainNews: (state) => {
-      const mainNews = selectMainArticle(state.news);
-      state.mainNews = mainNews;
-    },
-    saveSideNews: (state) => {
-      const sideNews = sideNewsArray(state.news, state.mainNews);
-      state.sideNews = sideNews;
+      const news = filterEmptyNews(action.payload.news);
+      state.newsState.news = news;
+
+      const mainNews = selectMainArticle(news);
+      state.newsState.mainNews = mainNews;
+
+      const sideNews = sideNewsArray(news, mainNews);
+      state.newsState.sideNews = sideNews;
     },
   },
 });
 
-export const { saveNews, resetNews, saveMainNews, saveSideNews } =
-  newsSlice.actions;
+export const { saveNews } = newsSlice.actions;
 
 export default newsSlice.reducer;

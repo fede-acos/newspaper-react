@@ -3,26 +3,20 @@ import IndividualNews from "./IndividualNews";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useGetNewsQuery } from "../api/apiSlice";
-import {
-  saveNews,
-  saveMainNews,
-  saveSideNews,
-} from "../features/news/newsSlice";
+import { saveNews } from "../features/news/newsSlice";
 import MainArticle from "./MainArticle";
 
 function TopNews() {
   const dispatch = useDispatch();
 
   const { section } = useSelector((state) => state.section);
-  const { sideNews, mainNews } = useSelector((state) => state.news);
+  const { mainNews, sideNews } = useSelector((state) => state.news.newsState);
 
   const { data, isLoading } = useGetNewsQuery(section);
 
   useEffect(() => {
     if (!isLoading) {
       dispatch(saveNews({ news: data.results }));
-      dispatch(saveMainNews({ news: data.results }));
-      dispatch(saveSideNews({ news: data.results }));
     }
   }, [data]);
   if (isLoading) return <div>Loading....</div>;
