@@ -22,6 +22,7 @@ function RelatedNews() {
 
   useEffect(() => {
     setRelatedNews([]);
+    setPage(1);
   }, [section]);
 
   useEffect(() => {
