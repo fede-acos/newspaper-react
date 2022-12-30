@@ -3,11 +3,12 @@ import IndividualNews from "./IndividualNews";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useGetNewsQuery } from "../api/apiSlice";
-import { filterEmptyNews, selectMainArticle } from "./utilities/filterNews";
 import { saveNews } from "../features/news/newsSlice";
 import MainArticle from "./MainArticle";
 
 function TopNews() {
+  const dispatch = useDispatch();
+
   const { section } = useSelector((state) => state.section);
 
   const { data, isLoading } = useGetNewsQuery(section);
@@ -17,12 +18,6 @@ function TopNews() {
       dispatch(saveNews({ news: data.results }));
     }
   }, [data]);
-
-  const {
-    newsState: { news, mainNews },
-  } = useSelector((state) => state.news);
-
-  const dispatch = useDispatch();
 
   if (isLoading) return <div>Loading....</div>;
 

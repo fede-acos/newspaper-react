@@ -1,14 +1,11 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import IndividualNews from "./IndividualNews";
 
 function MainArticle() {
-  const { newsState } = useSelector((state) => state.news);
+  const { mainNews } = useSelector((state) => state.news);
 
-  const news = newsState.mainNews;
-  const sideNews = newsState.relatedNews;
-
-  return <> {news.multimedia && <IndividualNews news={news} />}</>;
+  return <> {mainNews.multimedia && <IndividualNews news={mainNews} />}</>;
 }
 
 export default MainArticle;
