@@ -10,8 +10,15 @@ function RelatedNews() {
   const { news, mainNews, sideNews } = useSelector((state) => state.news);
 
   const [page, setPage] = useState(1);
-  console.log(resetrelatedNews);
-  const paginatedNews = paginate(news, page, sideNews, mainNews);
+
+  console.log(paginate(news, page, sideNews, mainNews));
+
+  const { paginatedNews, numberOfPages } = paginate(
+    news,
+    page,
+    sideNews,
+    mainNews
+  );
 
   useEffect(() => {
     setRelatedNews([]);
@@ -22,8 +29,7 @@ function RelatedNews() {
 
     setRelatedNews([...relatedNews, ...paginatedNews]);
   }, [page, news]);
-
-  console.log(relatedNews);
+  console.log(page >= numberOfPages);
   return (
     <div>
       {relatedNews &&
@@ -31,7 +37,10 @@ function RelatedNews() {
           return <IndividualNews key={news.url} news={news} />;
         })}
       {console.log(section)}
-      <button onClick={() => setPage((prevPage) => prevPage + 1)}>
+      <button
+        onClick={() => setPage((prevPage) => prevPage + 1)}
+        disabled={page >= numberOfPages}
+      >
         click ME
       </button>
     </div>

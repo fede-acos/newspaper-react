@@ -6,8 +6,13 @@ export const paginate = (news, page = 1, sideNews, mainNews) => {
   const newsWithoutSideNews = newsWithoutMainNews.filter(
     (news) => !sideNews.includes(news)
   );
-  return newsWithoutSideNews.slice(
+  const paginatedNews = newsWithoutSideNews.slice(
     RELATED_NEWS_AMOUNT * (page - 1),
     RELATED_NEWS_AMOUNT * page
   );
+  const numberOfPages = Math.ceil(
+    newsWithoutSideNews.length / RELATED_NEWS_AMOUNT
+  );
+
+  return { paginatedNews: paginatedNews, numberOfPages: numberOfPages };
 };
