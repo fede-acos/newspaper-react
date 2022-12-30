@@ -5,13 +5,14 @@ import IndividualNews from "./IndividualNews";
 function RelatedNews() {
   const { section } = useSelector((state) => state.section);
 
-  const [relatedNews, setRelatedNews, resetrelatedNews] = useState([]);
+  const [relatedNews, setRelatedNews] = useState([]);
 
   const { news, mainNews, sideNews } = useSelector((state) => state.news);
+  const [localSection, setLocalSection] = useState("world");
 
   const [page, setPage] = useState(1);
 
-  console.log(paginate(news, page, sideNews, mainNews));
+  console.log(relatedNews);
 
   const { paginatedNews, numberOfPages } = paginate(
     news,
@@ -21,20 +22,26 @@ function RelatedNews() {
   );
 
   useEffect(() => {
-    setRelatedNews([]);
     setPage(1);
+    if (section === localSection) {
+      setRelatedNews(...[], ...paginatedNews);
+      return;
+    }
+    setRelatedNews([]);
+    setLocalSection(section);
   }, [section]);
 
   useEffect(() => {
     if (relatedNews.some((element) => paginatedNews.includes(element))) return;
+    console.log("re render");
 
     setRelatedNews([...relatedNews, ...paginatedNews]);
   }, [page, news]);
-  console.log(page >= numberOfPages);
+
   return (
     <div>
       {relatedNews &&
-        relatedNews.map((news) => {
+        relatedNews?.map((news) => {
           return <IndividualNews key={news.url} news={news} />;
         })}
       {console.log(section)}
