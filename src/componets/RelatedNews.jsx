@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { paginate } from "./utilities/createRelatedNewsArray";
+import { paginate } from "./utilities/paginateRelatedNews";
 import IndividualNews from "./IndividualNews";
 function RelatedNews() {
   const { section } = useSelector((state) => state.section);

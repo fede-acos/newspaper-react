@@ -3,8 +3,6 @@ import {
   filterEmptyNews,
   selectMainArticle,
 } from "../../componets/utilities/filterNews";
-import { paginate } from "../../componets/utilities/createRelatedNewsArray";
-
 import { sideNewsArray } from "../../componets/utilities/createSideNewsArray";
 
 const initialState = {

@@ -1,12 +1,11 @@
 import React from "react";
-import "./App.css";
 import TopNews from "./componets/TopNews";
 import Navbar from "./componets/Navbar";
 import RelatedNews from "./componets/RelatedNews";
 
 function App() {
   return (
-    <div className="App">
+    <div className="bg-zinc-200 ">
       <Navbar />
       <TopNews />
       <RelatedNews />

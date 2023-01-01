@@ -8,10 +8,8 @@ import MainArticle from "./MainArticle";
 
 function TopNews() {
   const dispatch = useDispatch();
-
   const { section } = useSelector((state) => state.section);
   const { mainNews, sideNews } = useSelector((state) => state.news.newsState);
-
   const { data, isLoading } = useGetNewsQuery(section);
 
   useEffect(() => {
@@ -19,6 +17,7 @@ function TopNews() {
       dispatch(saveNews({ news: data.results }));
     }
   }, [data]);
+
   if (isLoading) return <div>Loading....</div>;
 
   return (
