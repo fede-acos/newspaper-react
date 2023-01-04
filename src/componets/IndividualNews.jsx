@@ -7,13 +7,12 @@ function IndividualNews({ news }) {
         <div className=" card bg-base-100 shadow-xl">
           <div className="card-body">
             <a className="hover:underline " href={news.url}>
-              <h2 className="card-title">{news.title}</h2>
+              <h2 className="card-title md:items-start">{news.title}</h2>
             </a>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
           </div>
           <figure className="relative">
             <img
-              className="p-2 rounded"
+              className="rounded"
               src={news.multimedia[0].url}
               alt={news.multimedia[0].caption}
             />

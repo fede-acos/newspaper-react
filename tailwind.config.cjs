@@ -3,7 +3,11 @@ module.exports = {
   mode: "jit",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        "my-columns": "3fr 1fr",
+      },
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {

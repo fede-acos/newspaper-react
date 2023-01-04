@@ -21,12 +21,14 @@ function TopNews() {
   if (isLoading) return <div>loading...</div>;
 
   return (
-    <>
+    <div className=" md:grid md:grid-cols-my-columns p-2">
       <MainArticle news={mainNews} />
-      {sideNews.map((news) => {
-        return <IndividualNews key={news.url} news={news} />;
-      })}
-    </>
+      <div>
+        {sideNews.map((news) => {
+          return <IndividualNews key={news.url} news={news} />;
+        })}
+      </div>
+    </div>
   );
 }
 

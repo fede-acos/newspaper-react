@@ -5,7 +5,6 @@ import { Divide as Hamburger } from "hamburger-react";
 import { themeChange } from "theme-change";
 
 const Navbar = () => {
-  const [isOpen, setOpen] = useState("dark");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,7 +14,6 @@ const Navbar = () => {
   function handleSectionChange(section) {
     dispatch(saveSection(section));
   }
-  console.log(isOpen);
   return (
     <>
       <div className="navbar bg-base-100">
@@ -109,12 +107,14 @@ const Navbar = () => {
           <a className="btn">Get started</a>
         </div>
       </div>
-      <button
+
+      <input
+        type="checkbox"
+        className="toggle"
         data-toggle-theme="business,corporate"
         data-act-class="ACTIVECLASS"
-      >
-        1
-      </button>
+        checked
+      />
     </>
   );
 };
