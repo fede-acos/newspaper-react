@@ -18,7 +18,7 @@ function TopNews() {
     }
   }, [data]);
 
-  if (isLoading) return <div>Loading....</div>;
+  if (isLoading) return <div>loading...</div>;
 
   return (
     <>

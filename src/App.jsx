@@ -5,7 +5,7 @@ import RelatedNews from "./componets/RelatedNews";
 
 function App() {
   return (
-    <div className="bg-zinc-200 ">
+    <div className="bg-zinc-200  ">
       <Navbar />
       <TopNews />
       <RelatedNews />

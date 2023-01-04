@@ -44,12 +44,15 @@ function RelatedNews() {
         relatedNews?.map((news) => {
           return <IndividualNews key={news.url} news={news} />;
         })}
-      <button
-        onClick={() => setPage((prevPage) => prevPage + 1)}
-        disabled={page >= numberOfPages}
-      >
-        click ME
-      </button>
+      <div className="w-full flex place-content-center mt-8">
+        <button
+          className="btn"
+          onClick={() => setPage((prevPage) => prevPage + 1)}
+          disabled={page >= numberOfPages}
+        >
+          Load More
+        </button>
+      </div>
     </div>
   );
 }
