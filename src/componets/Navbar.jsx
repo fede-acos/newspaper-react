@@ -1,76 +1,121 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { saveSection } from "../features/section/sectionSlice";
 import { Divide as Hamburger } from "hamburger-react";
+import { themeChange } from "theme-change";
 
 const Navbar = () => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState("dark");
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    themeChange(false);
+  }, []);
 
   function handleSectionChange(section) {
     dispatch(saveSection(section));
   }
   console.log(isOpen);
   return (
-    <nav className="">
-      <div>
-        <div className="w-12 h-12 z-40 relative text-black">
-          <Hamburger
-            size={30}
-            duration={0.5}
-            toggled={isOpen}
-            toggle={setOpen}
-            rounded
-            label="Show menu"
-          />
+    <>
+      <div className="navbar bg-base-100">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a>Item 1</a>
+              </li>
+              <li tabIndex={0}>
+                <a className="justify-between">
+                  Parent
+                  <svg
+                    className="fill-current"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+                  </svg>
+                </a>
+                <ul className="p-2">
+                  <li>
+                    <a>Submenu 1</a>
+                  </li>
+                  <li>
+                    <a>Submenu 2</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a>Item 3</a>
+              </li>
+            </ul>
+          </div>
+          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
         </div>
-
-        {isOpen && (
-          <ul className=" absolute w-[80vw] h-[100vh] top-0 z-20 bg-gray-50 pt-16 pl-[11px] rounded-lg flex flex-col border-gray-700 gap-2">
-            <li className="py-2 pl-3 pr-4 text-white bg-blue-700 rounded ">
-              <a href="#" onClick={() => handleSectionChange("world")}>
-                World
-              </a>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">
+            <li>
+              <a>Item 1</a>
             </li>
-            <li className="p-3 rounded py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-200">
-              <a href="#" onClick={() => handleSectionChange("politics")}>
-                Politics
+            <li tabIndex={0}>
+              <a>
+                Parent
+                <svg
+                  className="fill-current"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                </svg>
               </a>
+              <ul className="p-2">
+                <li>
+                  <a>Submenu 1</a>
+                </li>
+                <li>
+                  <a>Submenu 2</a>
+                </li>
+              </ul>
             </li>
-            <li className="p-3  rounded py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-200">
-              <a href="#" onClick={() => handleSectionChange("business")}>
-                Business
-              </a>
-            </li>
-            <li className="p-3  rounded py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-200">
-              <a href="#" onClick={() => handleSectionChange("technology")}>
-                Technology
-              </a>
-            </li>
-            <li className="p-3  rounded py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-200">
-              <a href="#" onClick={() => handleSectionChange("science")}>
-                Science
-              </a>
-            </li>
-            <li className="p-3  rounded py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-200">
-              <a href="#" onClick={() => handleSectionChange("sports")}>
-                Sports
-              </a>
-            </li>
-            <li className="p-3  rounded py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-200">
-              <a href="#" onClick={() => handleSectionChange("movies")}>
-                Movies
-              </a>
+            <li>
+              <a>Item 3</a>
             </li>
           </ul>
-        )}
+        </div>
+        <div className="navbar-end">
+          <a className="btn">Get started</a>
+        </div>
       </div>
-      <div className="flex pl-2 pr-2">
-        <a href="#">
-          <img src="./src/assets/img/The-News-Times-3.svg" alt="logo" />
-        </a>
-      </div>
-    </nav>
+      <button
+        data-toggle-theme="business,corporate"
+        data-act-class="ACTIVECLASS"
+      >
+        1
+      </button>
+    </>
   );
 };
 
