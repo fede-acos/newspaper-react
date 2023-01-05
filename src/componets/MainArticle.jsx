@@ -3,7 +3,7 @@ import React from "react";
 function MainArticle({ news }) {
   return (
     <>
-      {news && (
+      {news.multimedia && (
         <article className="mt-8 ">
           <div className=" card bg-base-100 shadow-xl p-2">
             <a className="hover:underline " href={news.url}>

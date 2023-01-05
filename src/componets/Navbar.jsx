@@ -4,6 +4,7 @@ import NavBarItems from "./NavBarItems";
 
 const Navbar = () => {
   const [toggleNavbar, setToggleNavbar] = useState(false);
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
     themeChange(false);
@@ -12,6 +13,17 @@ const Navbar = () => {
   function handleClick() {
     setToggleNavbar((prev) => !prev);
   }
+  function handleThemeChange() {
+    console.log(theme);
+
+    setTheme((prevTheme) => {
+      if (prevTheme === "light") {
+        return "business";
+      }
+      return "light";
+    });
+  }
+  console.log(theme);
   return (
     <>
       <nav className="navbar bg-base-100">
@@ -56,7 +68,8 @@ const Navbar = () => {
         </div>
         <div className=" ">
           <button
-            data-toggle-theme="dark,corporate"
+            onClick={() => handleThemeChange()}
+            data-set-theme={theme}
             data-act-class="ACTIVECLASS"
           >
             <svg
