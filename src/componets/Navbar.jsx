@@ -26,7 +26,7 @@ const Navbar = () => {
   console.log(theme);
   return (
     <>
-      <nav className="navbar bg-base-100">
+      <nav className="navbar justify-between bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <button
@@ -56,7 +56,7 @@ const Navbar = () => {
               <div />
             )}
           </div>
-          <a className="btn btn-ghost normal-case text-xl">The News Times</a>
+          <a className="btn btn-ghost normal-case text-2xl">The News Times</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -66,7 +66,7 @@ const Navbar = () => {
         <div className="navbar-end hidden md:flex ">
           <a className="btn">Get started</a>
         </div>
-        <div className=" ">
+        <div className="pr-2 hover:opacity-90">
           <button
             onClick={() => handleThemeChange()}
             data-set-theme={theme}
