@@ -6,7 +6,7 @@ function IndividualNews({ news }) {
       <article className="mt-8 ">
         <div className=" card bg-base-100 shadow-xl p-2">
           <a className="hover:underline " href={news.url}>
-            <h2 className="card-title md:items-start">{news.title}</h2>
+            <h2 className="card-title text-xl md:items-start">{news.title}</h2>
           </a>
           <figure className="relative">
             <img

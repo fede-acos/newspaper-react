@@ -18,7 +18,12 @@ function TopNews() {
     }
   }, [data]);
 
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading)
+    return (
+      <div className="flex place-content-center mt-5">
+        <button className="btn loading w-18">loading</button>
+      </div>
+    );
 
   return (
     <div className=" md:grid md:grid-cols-my-columns p-2">

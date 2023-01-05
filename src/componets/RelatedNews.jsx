@@ -46,7 +46,7 @@ function RelatedNews() {
         })}
       <div className="w-full flex place-content-center mt-8">
         <button
-          className="btn"
+          className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"
           onClick={() => setPage((prevPage) => prevPage + 1)}
           disabled={page >= numberOfPages}
         >
