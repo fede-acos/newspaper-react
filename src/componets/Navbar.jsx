@@ -14,8 +14,6 @@ const Navbar = () => {
     setToggleNavbar((prev) => !prev);
   }
   function handleThemeChange() {
-    console.log(theme);
-
     setTheme((prevTheme) => {
       if (prevTheme === "light") {
         return "business";
@@ -23,14 +21,14 @@ const Navbar = () => {
       return "light";
     });
   }
-  console.log(theme);
+
   return (
     <>
-      <nav className="navbar justify-between bg-base-100">
+      <nav className="navbar justify-between bg-base-100 pt-6">
         <div className="navbar-start">
           <div className="dropdown">
             <button
-              className="btn btn-ghost lg:hidden"
+              className="btn btn-ghost 2xl:hidden"
               onClick={() => handleClick()}
             >
               <svg
@@ -56,15 +54,17 @@ const Navbar = () => {
               <div />
             )}
           </div>
-          <a className="btn btn-ghost normal-case text-2xl">The News Times</a>
+          <a className="btn btn-ghost normal-case text-3xl 2xl:text-5xl sm:text-4xl">
+            The News Times
+          </a>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden 2xl:flex">
           <ul className="menu menu-horizontal px-1">
             <NavBarItems />
           </ul>
         </div>
-        <div className="navbar-end hidden md:flex ">
-          <a className="btn">Get started</a>
+        <div className="navbar-end hidden md:flex pr-4 ">
+          <a className="btn">Subscribe</a>
         </div>
         <div className="pr-2 hover:opacity-90">
           <button
