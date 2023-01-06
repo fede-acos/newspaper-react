@@ -4,7 +4,7 @@ import NavBarItems from "./NavBarItems";
 
 const Navbar = () => {
   const [toggleNavbar, setToggleNavbar] = useState(false);
-  const [theme, setTheme] = useState("");
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
     themeChange(false);
