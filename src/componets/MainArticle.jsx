@@ -4,10 +4,10 @@ function MainArticle({ news }) {
   return (
     <>
       {news.multimedia && (
-        <article className="mt-8 ">
-          <div className=" card bg-base-100 shadow-xl p-2">
+        <article className="md:mb-40 mb-10">
+          <div className=" card bg-base-100 shadow-xl p-2 text-center md:text-left">
             <a className="hover:underline " href={news.url}>
-              <h2 className="card-title text-3xl md:items-start">
+              <h2 className="card-title text-3xl md:items-start ">
                 {news.title}
               </h2>
             </a>
@@ -29,6 +29,7 @@ function MainArticle({ news }) {
           </div>
         </article>
       )}
+      <div className="divider p-2 md:hidden"> </div>
     </>
   );
 }

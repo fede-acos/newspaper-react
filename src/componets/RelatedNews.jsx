@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { paginate } from "./utilities/paginateRelatedNews";
-import IndividualNews from "./IndividualNews";
 function RelatedNews() {
-  const { section } = useSelector((state) => state.section);
-
   const [relatedNews, setRelatedNews] = useState([]);
 
   const { news, mainNews, sideNews } = useSelector(
@@ -40,17 +37,18 @@ function RelatedNews() {
   console.log(paginatedNews);
 
   return (
-    <div className="flex place-content-center flex-col xl:pr-24 xl:pl-24  ">
+    <div className="flex place-content-center flex-col xl:pr-24 xl:pl-24 2xl:mt-40 2xl:mb-40 ">
       {relatedNews?.map((news) => {
         return (
-          <article className="lg:mt-8 mt-4  ">
-            <div className=" bg-base-100 shadow-xl p-2 md:flex md:flex-row-reverse ">
-              <a className="hover:underline " href={news.url}>
-                <h2 className="card-title md:items-start xl:text-3xl md:text-2xl ">
+          <article className="lg:mt-8 md:mt-4  mt-10   ">
+            <div className=" bg-base-100 shadow-xl p-2 md:flex md:flex-row-reverse md:justify-end rounded-box ">
+              <a className="" href={news.url}>
+                <h2 className="card-title md:items-start xl:text-3xl md:text-2xl flex flex-col hover:underline text-center md:text-left ">
                   {news.title}
                 </h2>
+                <p className="md:block hidden "> {news.abstract}</p>
               </a>
-              <figure className="relative">
+              <figure className="relative ">
                 <img
                   className="rounded xl:max-w-[500px] 2xl:max-w-[500px] max-w-[400px] mr-4 md:mr-6 "
                   src={news.multimedia[1].url}
@@ -66,7 +64,7 @@ function RelatedNews() {
           </article>
         );
       })}
-      <div className="w-full flex place-content-center mt-8">
+      <div className="w-full flex place-content-center mt-8 mb-8 2xl:mt-32 2xl:mb-2">
         <button
           className="btn btn-sm md:btn-md lg:btn-lg"
           onClick={() => setPage((prevPage) => prevPage + 1)}

@@ -3,10 +3,10 @@ import React from "react";
 function IndividualNews({ news }) {
   return (
     <>
-      <article className="lg:mt-8 mt-4 ">
+      <article className=" mb-8 md:mb-10">
         <div className=" card bg-base-100 shadow-xl p-2">
           <a className="hover:underline " href={news.url}>
-            <h2 className="card-title md:items-start md:text-[16px] xl:text-xl 2xl:text-2xl">
+            <h2 className="card-title md:items-start md:text-[16px] xl:text-xl 2xl:text-2xl text-center md:text-left">
               {news.title}
             </h2>
           </a>

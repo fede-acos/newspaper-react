@@ -26,14 +26,16 @@ function TopNews() {
     );
 
   return (
-    <div className=" md:grid md:grid-cols-my-columns p-2 2xl:pl-24 2xl:pr-24">
-      <MainArticle news={mainNews} />
-      <div>
-        {sideNews.map((news) => {
-          return <IndividualNews key={news.url} news={news} />;
-        })}
+    <>
+      <div className=" md:grid md:grid-cols-my-columns p-2 2xl:pl-24 2xl:pr-24 mt-10 2xl:mt-36">
+        <MainArticle news={mainNews} />
+        <div>
+          {sideNews.map((news) => {
+            return <IndividualNews key={news.url} news={news} />;
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

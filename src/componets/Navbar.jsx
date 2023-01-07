@@ -54,7 +54,7 @@ const Navbar = () => {
               <div />
             )}
           </div>
-          <a className="btn btn-ghost normal-case text-3xl 2xl:text-5xl sm:text-4xl">
+          <a className="btn btn-ghost normal-case text-3xl 2xl:text-5xl sm:text-4xl ml-[2%]">
             The News Times
           </a>
         </div>
