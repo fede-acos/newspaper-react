@@ -12,7 +12,7 @@ function IndividualNews({ news }) {
           </a>
           <figure className="relative">
             <img
-              className="rounded"
+              className="rounded mr-4 md:mr-6 "
               src={news.multimedia[1].url}
               alt={news.multimedia[0].caption}
             />

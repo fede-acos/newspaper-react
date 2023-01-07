@@ -50,7 +50,7 @@ function RelatedNews() {
               </a>
               <figure className="relative ">
                 <img
-                  className="rounded xl:max-w-[500px] 2xl:max-w-[500px] max-w-[400px] mr-4 md:mr-6 "
+                  className="rounded xl:max-w-[500px] 2xl:max-w-[600px] sm:max-w-[400px] max-w-[100%] mr-4 md:mr-6 "
                   src={news.multimedia[1].url}
                   alt={news.multimedia[0].caption}
                 />
