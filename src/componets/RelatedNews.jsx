@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { paginate } from "./utilities/paginateRelatedNews";
-function RelatedNews() {
+function RelatedNews({ isLoading }) {
   const [relatedNews, setRelatedNews] = useState([]);
 
   const { news, mainNews, sideNews } = useSelector(
@@ -24,23 +24,30 @@ function RelatedNews() {
   }, [news]);
 
   useEffect(() => {
-    console.log(2);
-
-    if (page <= 1) return;
-    if (relatedNews.some((element) => paginatedNews.includes(element))) return;
+    if (
+      page <= 1 ||
+      RelatedNews.some((element) => paginatedNews.includes(element))
+    )
+      return;
     setRelatedNews([...relatedNews, ...paginatedNews]);
   }, [page]);
 
-  if (relatedNews.length === 0 && paginatedNews.length >= 1) {
-    setRelatedNews(paginatedNews); //render the news in the first render
-  }
-  console.log(paginatedNews);
+  // if (relatedNews.length === 0 && paginatedNews.length >= 1) {
+  //   setRelatedNews(paginatedNews); //render the news in the first render
+  // }
+
+  if (isLoading) return <></>;
 
   return (
-    <div className="flex place-content-center flex-col xl:pr-24 xl:pl-24 2xl:mt-40 2xl:mb-40 ">
+    <div className="flex place-content-center flex-col xl:pr-24 xl:pl-24 2xl:mt-40 2xl:mb-40  ">
+      <div className="divider p-2 mt-5 mb-5 md:hidden"> </div>
+
+      <div className=" bg-primary hover:bg-primary-focus p-2 font-bold rounded max-w-fit relative left-2">
+        <h1 className="text-primary-content  text-sm ">RELATED NEWS</h1>
+      </div>
       {relatedNews?.map((news) => {
         return (
-          <article className="lg:mt-8 md:mt-4  mt-10   ">
+          <article key={news.url} className="lg:mt-8 md:mt-4  mt-10   ">
             <div className=" bg-base-100 shadow-xl p-2 md:flex md:flex-row-reverse md:justify-end rounded-box ">
               <a className="" href={news.url}>
                 <h2 className="card-title md:items-start xl:text-3xl md:text-2xl flex flex-col hover:underline text-center md:text-left ">

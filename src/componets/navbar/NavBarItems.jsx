@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { saveSection } from "../features/section/sectionSlice";
+import { saveSection } from "../../features/section/sectionSlice";
 
 function NavBarItems() {
   const dispatch = useDispatch();

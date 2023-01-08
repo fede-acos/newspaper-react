@@ -7,7 +7,7 @@ function MainArticle({ news }) {
         <article className="md:mb-40 mb-10">
           <div className=" card bg-base-100 shadow-xl p-2 text-center md:text-left">
             <a className="hover:underline " href={news.url}>
-              <h2 className="card-title text-3xl md:items-start ">
+              <h2 className="card-title text-3xl md:items-start mb-4 2xl:text-4xl ">
                 {news.title}
               </h2>
             </a>
@@ -23,7 +23,7 @@ function MainArticle({ news }) {
                 </h2>
               </div>
             </figure>
-            <p className="pt-4 font-medium text-base lg:font-">
+            <p className="pt-4 font-medium text-base lg:text-lg xl:text-xl 2xl:text-2xl">
               {news.abstract}
             </p>
           </div>
