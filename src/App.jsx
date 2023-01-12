@@ -3,6 +3,7 @@ import TopNews from "./componets/TopNews";
 import Navbar from "./componets/navbar/Navbar";
 import RelatedNews from "./componets/RelatedNews";
 import Footer from "./componets/Footer";
+import Login from "./componets/login-signUp/login";
 import { useGetNewsQuery } from "./api/apiSlice";
 import { useSelector } from "react-redux";
 
@@ -12,12 +13,13 @@ function App() {
 
   return (
     <>
-      <div className="sm:pl-4 sm:pr-4">
+      <Login />
+      {/*       <div className="sm:pl-4 sm:pr-4">
         <Navbar />
         <TopNews data={data} isLoading={isLoading} />
         <RelatedNews isLoading={isLoading} />
       </div>
-      <Footer isLoading={isLoading} />
+      <Footer isLoading={isLoading} /> */}
     </>
   );
 }
