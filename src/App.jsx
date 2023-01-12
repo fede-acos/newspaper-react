@@ -13,13 +13,12 @@ function App() {
 
   return (
     <>
-      <Login />
-      {/*       <div className="sm:pl-4 sm:pr-4">
+      <div className="sm:pl-4 sm:pr-4">
         <Navbar />
         <TopNews data={data} isLoading={isLoading} />
         <RelatedNews isLoading={isLoading} />
       </div>
-      <Footer isLoading={isLoading} /> */}
+      <Footer isLoading={isLoading} />
     </>
   );
 }
