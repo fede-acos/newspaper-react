@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { themeChange } from "theme-change";
 import NavBarItems from "./NavBarItems";
 import BtnDarkModeToggle from "./BtnDarkModeToggle";
+import { useNavigate } from "react-router-dom";
+
 const Navbar = () => {
   const [toggleNavbar, setToggleNavbar] = useState(false);
-  const [theme, setTheme] = useState("light");
+  const navigate = useNavigate();
 
   useEffect(() => {
     themeChange(false);
@@ -13,23 +15,18 @@ const Navbar = () => {
   function handleClick() {
     setToggleNavbar((prev) => !prev);
   }
-  function handleThemeChange() {
-    setTheme((prevTheme) => {
-      if (prevTheme === "light") {
-        return "business";
-      }
-      return "light";
-    });
-  }
+
+  const handleClickLogIn = () => navigate("/login");
+  const handleClickSignUp = () => navigate("/signup");
 
   return (
     <>
-      <nav className="navbar justify-between bg-base-100 pt-6">
-        <div className="navbar-start w-[100%] place-content-center md:justify-start md:w-[50%]">
+      <nav className="navbar space-between bg-base-100 pt-6">
+        <div className="navbar-start w-[100%] justify-between md:justify-start md:w-[50%]">
           <div className="dropdown ">
             <button
               className="btn btn-ghost 2xl:hidden xl:pl-4 xl:pr-4 xl:h-12 pl-2 pr-2 h-8"
-              onClick={() => handleClick()}
+              onClick={handleClick}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -59,8 +56,6 @@ const Navbar = () => {
           </a>
           <BtnDarkModeToggle
             style={"pr-2 hover:opacity-90 md:hidden relative top-1 "}
-            theme={theme}
-            handleThemeChange={handleThemeChange}
           />
         </div>
         <div className="navbar-center hidden 2xl:flex">
@@ -69,14 +64,15 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end hidden md:flex pr-4 ">
-          <a className="btn">Subscribe</a>
+          <a onClick={handleClickSignUp} className=" btn btn-primary  mr-2">
+            Subscribe
+          </a>
+          <a onClick={handleClickLogIn} className="btn ">
+            Log In
+          </a>
         </div>
 
-        <BtnDarkModeToggle
-          style={"pr-2 hover:opacity-90 hidden md:block"}
-          theme={theme}
-          handleThemeChange={handleThemeChange}
-        />
+        <BtnDarkModeToggle style={"pr-2 hover:opacity-90 hidden md:block"} />
       </nav>
     </>
   );
