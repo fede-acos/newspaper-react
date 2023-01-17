@@ -1,25 +1,20 @@
 import React from "react";
-import TopNews from "./componets/TopNews";
-import Navbar from "./componets/navbar/Navbar";
-import RelatedNews from "./componets/RelatedNews";
-import Footer from "./componets/Footer";
-import Login from "./componets/login-signUp/login";
-import { useGetNewsQuery } from "./api/apiSlice";
-import { useSelector } from "react-redux";
+import Login from "./componets/auth/Login";
+import SignUp from "./componets/auth/SignUp";
+import Home from "./componets/home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ErrorPage from "./componets/ErrorPage";
 
 function App() {
-  const { section } = useSelector((state) => state.section);
-  const { data, isLoading } = useGetNewsQuery(section);
-
   return (
-    <>
-      <div className="sm:pl-4 sm:pr-4">
-        <Navbar />
-        <TopNews data={data} isLoading={isLoading} />
-        <RelatedNews isLoading={isLoading} />
-      </div>
-      <Footer isLoading={isLoading} />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 export default App;
