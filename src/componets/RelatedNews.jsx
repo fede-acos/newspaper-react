@@ -20,13 +20,12 @@ function RelatedNews({ isLoading }) {
   useEffect(() => {
     setPage(1);
     setRelatedNews(paginatedNews);
-    console.log(1);
   }, [news]);
 
   useEffect(() => {
     if (
       page <= 1 ||
-      RelatedNews.some((element) => paginatedNews.includes(element))
+      relatedNews.some((element) => paginatedNews.includes(element))
     )
       return;
     setRelatedNews([...relatedNews, ...paginatedNews]);

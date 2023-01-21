@@ -2,18 +2,28 @@ import React, { useState } from "react";
 import { auth } from "../../firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../features/auth/authSlice";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
+      dispatch(
+        login({
+          name: user.displayName,
+          email: user.email,
+          isVerified: user.emailVerified,
+        })
+      );
       navigate("/");
     } catch (err) {
       console.log(err.message);

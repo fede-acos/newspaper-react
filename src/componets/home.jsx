@@ -13,9 +13,13 @@ function Home() {
   const { data, isLoading } = useGetNewsQuery(section);
   const [user, setUser] = useState({});
 
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      if (user) {
+        setUser(currentUser);
+      }
+    });
+  }, []);
 
   const logOut = async () => {
     await signOut(auth);

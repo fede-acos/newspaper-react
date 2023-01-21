@@ -7,14 +7,14 @@ import ErrorPage from "./componets/ErrorPage";
 import { useSelector } from "react-redux";
 
 function App() {
-  const { currentUser } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
 
   const RequiredAuth = ({ children }) => {
     //use this for the accuount page
-    return currentUser ? children : <Navigate to="/login" />;
+    return user ? children : <Navigate to="/login" />;
   };
   const UserLoggedInRedirect = ({ children }) => {
-    return currentUser ? <Navigate to="/" /> : children;
+    return user ? <Navigate to="/" /> : children;
   };
   return (
     <BrowserRouter>
