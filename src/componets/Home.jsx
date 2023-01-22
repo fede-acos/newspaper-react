@@ -36,6 +36,7 @@ function Home() {
       }
     });
   }, []);
+
   return (
     <>
       <div className="sm:pl-4 sm:pr-4">

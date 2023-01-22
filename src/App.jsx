@@ -10,8 +10,9 @@ function App() {
   const { user } = useSelector((state) => state.auth);
 
   console.log(user ? "not empty" : "empty");
+
   const RequiredAuth = ({ children }) => {
-    //use this for the accuount page
+    //use this for the pages than need to be logged in
     return user ? children : <Navigate to="/login" />;
   };
   const UserLoggedInRedirect = ({ children }) => {
