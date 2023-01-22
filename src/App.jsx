@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "./componets/auth/Login";
 import SignUp from "./componets/auth/SignUp";
-import Home from "./componets/home";
+import Home from "./componets/Home";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import ErrorPage from "./componets/ErrorPage";
 import { useSelector } from "react-redux";
