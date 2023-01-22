@@ -61,7 +61,7 @@ function RelatedNews({ isLoading }) {
                   src={news.multimedia[1].url}
                   alt={news.multimedia[0].caption}
                 />
-                <div className="absolute bottom-0 left-0 bg-blue-700 p-1.5 font-bold rounded">
+                <div className="absolute bottom-0 left-0 bg-primary hover:bg-primary-focus  p-1.5 font-bold rounded">
                   <h1 className="text-white text-sm ">
                     {news.section.toUpperCase()}
                   </h1>
@@ -73,7 +73,7 @@ function RelatedNews({ isLoading }) {
       })}
       <div className="w-full flex place-content-center mt-8 mb-8 2xl:mt-32 2xl:mb-2">
         <button
-          className="btn btn-sm md:btn-md lg:btn-lg"
+          className="btn btn-sm md:btn-md lg:btn-lg bg-primary hover:bg-primary-focus "
           onClick={() => setPage((prevPage) => prevPage + 1)}
           disabled={page >= numberOfPages}
         >

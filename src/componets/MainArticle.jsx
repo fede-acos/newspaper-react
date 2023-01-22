@@ -17,7 +17,7 @@ function MainArticle({ news }) {
                 src={news.multimedia[0].url}
                 alt={news.multimedia[0].caption}
               />
-              <div className="absolute bottom-0 left-0 bg-blue-700 p-1.5 font-bold rounded">
+              <div className="absolute bottom-0 left-0 bg-primary hover:bg-primary-focus p-1.5 font-bold rounded">
                 <h2 className="text-white text-sm ">
                   {news.section.toUpperCase()}
                 </h2>
