@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { themeChange } from "theme-change";
 
 function BtnDarkModeToggle({ style }) {
   const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    themeChange(false);
+  }, []);
+
   const toggleTheme = () => {
-    setTheme(theme === "bussines" ? "light" : "bussines");
+    setTheme(theme === "dark" ? "light" : "dark");
   };
+
   useEffect(() => {
     document.querySelector("body").setAttribute("data-theme", theme);
   }, [theme]);

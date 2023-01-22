@@ -11,11 +11,14 @@ function IndividualNews({ news }) {
             </h2>
           </a>
           <figure className="relative">
-            <img
-              className="rounded mr-4 md:mr-6 "
-              src={news.multimedia[1].url}
-              alt={news.multimedia[0].caption}
-            />
+            <a href={news.url}>
+              <img
+                className="rounded mr-4 md:mr-6 "
+                src={news.multimedia[1].url}
+                alt={news.multimedia[0].caption}
+              />
+            </a>
+
             <div className="absolute bottom-0 left-0 bg-primary hover:bg-primary-focus  p-1.5 font-bold rounded">
               <h1 className="text-white text-sm ">
                 {news.section.toUpperCase()}

@@ -49,18 +49,25 @@ function RelatedNews({ isLoading }) {
         return (
           <article key={news.url} className="lg:mt-8 md:mt-4  mt-10   ">
             <div className=" bg-base-100 shadow-xl p-2 md:flex md:flex-row-reverse md:justify-end rounded-box ">
-              <a className="" href={news.url}>
-                <h2 className="card-title md:items-start xl:text-3xl md:text-2xl flex flex-col hover:underline text-center md:text-left ">
-                  {news.title}
-                </h2>
+              <div>
+                <a className="" href={news.url}>
+                  <h2 className="card-title md:items-start xl:text-3xl md:text-2xl flex flex-col hover:underline text-center md:text-left ">
+                    {news.title}
+                  </h2>
+                </a>
+
                 <p className="md:block hidden "> {news.abstract}</p>
-              </a>
+              </div>
+
               <figure className="relative ">
-                <img
-                  className="rounded xl:max-w-[500px] 2xl:max-w-[600px] sm:max-w-[400px] max-w-[100%] mr-4 md:mr-6 "
-                  src={news.multimedia[1].url}
-                  alt={news.multimedia[0].caption}
-                />
+                <a href={news.url}>
+                  <img
+                    className="rounded xl:max-w-[500px] 2xl:max-w-[600px] sm:max-w-[400px] max-w-[100%] mr-4 md:mr-6 "
+                    src={news.multimedia[1].url}
+                    alt={news.multimedia[0].caption}
+                  />
+                </a>
+
                 <div className="absolute bottom-0 left-0 bg-primary hover:bg-primary-focus  p-1.5 font-bold rounded">
                   <h1 className="text-white text-sm ">
                     {news.section.toUpperCase()}

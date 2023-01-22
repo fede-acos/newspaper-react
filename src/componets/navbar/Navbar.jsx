@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { themeChange } from "theme-change";
 import NavBarItems from "./NavBarItems";
 import BtnDarkModeToggle from "./BtnDarkModeToggle";
 import { useNavigate } from "react-router-dom";
@@ -7,10 +6,6 @@ import { useNavigate } from "react-router-dom";
 const Navbar = ({ user, logOut }) => {
   const [toggleNavbar, setToggleNavbar] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    themeChange(false);
-  }, []);
 
   function handleClick() {
     setToggleNavbar((prev) => !prev);
@@ -52,7 +47,7 @@ const Navbar = ({ user, logOut }) => {
             )}
           </div>
           <a className="btn btn-ghost normal-case text-3xl 2xl:text-5xl sm:text-4xl ml-[2%] xl:pl-4 xl:pr-4  pl-3 pr-3 ">
-            The News Times
+            <h1> The News Times</h1>
           </a>
           <BtnDarkModeToggle
             style={"pr-2 hover:opacity-90 md:hidden relative top-1 "}
