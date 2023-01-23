@@ -1,10 +1,15 @@
+//TODO
+//change the fonts for someting better
+//add the login y subscribe btn to the navbar in responsive mode
+//add the account btn if logged in
+
 import React from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import Login from "./componets/auth/Login";
-import SignUp from "./componets/auth/SignUp";
-import ErrorPage from "./componets/ErrorPage";
-import Home from "./componets/Home";
+import Login from "./components/auth/Login";
+import SignUp from "./components/auth/SignUp";
+import ErrorPage from "./components/ErrorPage";
+import Home from "./components/Home";
 
 function App() {
   const { user } = useSelector((state) => state.auth);

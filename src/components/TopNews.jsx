@@ -16,7 +16,7 @@ function TopNews({ data, isLoading }) {
 
   if (isLoading)
     return (
-      <div className="flex place-content-center mt-5">
+      <div className="flex place-content-center mt-5 h-[100vh]">
         <button className="btn loading w-18">loading</button>
       </div>
     );
