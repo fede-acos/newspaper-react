@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { saveSection } from "../../features/section/sectionSlice";
 
-function NavBarItems() {
+function NavBarItems({ handleClickLogIn, handleClickSignUp }) {
   const dispatch = useDispatch();
 
   function handleSectionChange(section) {
@@ -11,7 +11,7 @@ function NavBarItems() {
 
   return (
     <>
-      <li>
+      <li className="bg-base-200">
         <a
           className="cursor-pointer"
           onClick={() => handleSectionChange("world")}
@@ -19,7 +19,7 @@ function NavBarItems() {
           World
         </a>
       </li>
-      <li>
+      <li className="bg-base-200">
         <a
           className="cursor-pointer"
           onClick={() => handleSectionChange("politics")}
@@ -28,7 +28,7 @@ function NavBarItems() {
         </a>
       </li>
 
-      <li>
+      <li className="bg-base-200">
         <a
           className="cursor-pointer"
           onClick={() => handleSectionChange("business")}
@@ -36,7 +36,7 @@ function NavBarItems() {
           Business
         </a>
       </li>
-      <li>
+      <li className="bg-base-200">
         <a
           className="cursor-pointer"
           onClick={() => handleSectionChange("technology")}
@@ -45,7 +45,7 @@ function NavBarItems() {
         </a>
       </li>
 
-      <li>
+      <li className="bg-base-200">
         <a
           className="cursor-pointer"
           onClick={() => handleSectionChange("science")}
@@ -53,7 +53,7 @@ function NavBarItems() {
           Science
         </a>
       </li>
-      <li>
+      <li className="bg-base-200">
         <a
           className="cursor-pointer"
           onClick={() => handleSectionChange("sports")}
@@ -62,7 +62,7 @@ function NavBarItems() {
         </a>
       </li>
 
-      <li>
+      <li className="bg-base-200">
         <a
           className="cursor-pointer"
           onClick={() => handleSectionChange("movies")}
@@ -70,6 +70,18 @@ function NavBarItems() {
           Movies
         </a>
       </li>
+      <div className=" flex gap-1 bg-base-200 pl-2 md:hidden">
+        <li className="bg-primary text-primary-content">
+          <a onClick={handleClickSignUp} className="cursor-pointer  ">
+            Subscribe
+          </a>
+        </li>
+        <li className="bg-neutral text-neutral-content">
+          <a onClick={handleClickLogIn} className="cursor-pointer ">
+            Login
+          </a>
+        </li>
+      </div>
     </>
   );
 }

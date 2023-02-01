@@ -12,7 +12,7 @@ export default function ErrorPage() {
           <p className="py-6">Sorry, page not found..</p>
           <button
             onClick={handleClick}
-            className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg mt-5 bg-red-600 hover:bg-red-500 border-none"
+            className="btn-xs btn mt-5 border-none bg-red-600 hover:bg-red-500 sm:btn-sm md:btn-md lg:btn-lg"
           >
             Back to Home
           </button>

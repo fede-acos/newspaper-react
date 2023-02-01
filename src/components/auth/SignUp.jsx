@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { auth } from "../../firebase-config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../../firebase-config";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -37,7 +37,7 @@ function SignUp() {
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="card w-full max-w-sm flex-shrink-0 bg-base-100 shadow-2xl">
           <form onSubmit={handleSubmit} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -48,7 +48,7 @@ function SignUp() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
-                className="input input-bordered"
+                className="input-bordered input"
                 required
               />
             </div>
@@ -62,20 +62,20 @@ function SignUp() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
                 required
-                className="input input-bordered"
+                className="input-bordered input"
               />
               <label className="label">
                 <a
                   href="#"
                   onClick={handleClick}
-                  className="label-text-alt link link-hover"
+                  className="link-hover label-text-alt link"
                 >
                   Have an Account Already? Log In
                 </a>
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Sign Up</button>
+              <button className="btn-primary btn">Sign Up</button>
             </div>
             {error ? (
               <span className="text-error">
