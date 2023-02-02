@@ -1,40 +1,61 @@
-import React, { useState, useEffect } from "react";
-import TopNews from "./TopNews";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useGetNewsQuery } from "../api/apiSlice";
+import { login, logOut } from "../features/auth/authSlice";
+import { auth } from "../firebase-config";
+import ErrorPage from "./ErrorPage";
+import Footer from "./Footer";
 import Navbar from "./navbar/Navbar";
 import RelatedNews from "./RelatedNews";
-import Footer from "./Footer";
-import { useGetNewsQuery } from "../api/apiSlice";
-import { useSelector } from "react-redux";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../firebase-config";
+import TopNews from "./TopNews";
 
 function Home() {
   const { section } = useSelector((state) => state.section);
-  const { data, isLoading } = useGetNewsQuery(section);
+  const { data, isLoading, isError, error } = useGetNewsQuery(section);
   const [user, setUser] = useState({});
+  const dispatch = useDispatch();
+
+  const logOut = async () => {
+    await signOut(auth);
+    dispatch(logOut());
+  };
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
-      if (user) {
-        setUser(currentUser);
+      setUser(currentUser);
+      if (currentUser) {
+        dispatch(
+          login({
+            name: currentUser?.displayName,
+            email: currentUser?.email,
+            isVerified: currentUser?.emailVerified,
+          })
+        );
       }
     });
   }, []);
 
-  const logOut = async () => {
-    await signOut(auth);
-  };
-
   return (
     <>
-      <div className="sm:pl-4 sm:pr-4">
-        <Navbar user={user} logOut={logOut} />
-        <TopNews data={data} isLoading={isLoading} />
-        <RelatedNews isLoading={isLoading} />
-      </div>
-      <Footer isLoading={isLoading} />
+      {isError ? (
+        <ErrorPage />
+      ) : (
+        <>
+          <div className="sm:pl-4 sm:pr-4">
+            <Navbar user={user} logOut={logOut} />
+            <TopNews
+              data={data}
+              isLoading={isLoading}
+              isError={isError}
+              error={error}
+            />
+            <RelatedNews isLoading={isLoading} />
+          </div>
+          <Footer isLoading={isLoading} />
+        </>
+      )}
     </>
   );
 }
-
 export default Home;

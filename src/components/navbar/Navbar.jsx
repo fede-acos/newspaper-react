@@ -21,7 +21,7 @@ const Navbar = ({ user, logOut }) => {
         // if we are clicking  the close dropdown btn returns
       )
         return;
-      handleClick();
+      setIsDropDownOpen(false);
     }
   };
 
@@ -67,6 +67,7 @@ const Navbar = ({ user, logOut }) => {
                 className="menu rounded-box absolute z-10 w-52 justify-center bg-base-200 p-2 shadow-xl  "
               >
                 <NavBarItems
+                  user={user}
                   handleClickLogIn={handleClickLogIn}
                   handleClickSignUp={handleClickSignUp}
                 />
@@ -84,13 +85,14 @@ const Navbar = ({ user, logOut }) => {
         <div className="navbar-center hidden 2xl:flex">
           <ul ref={dropdownRef} className="menu menu-horizontal px-1">
             <NavBarItems
+              user={user}
               handleClickLogIn={handleClickLogIn}
               handleClickSignUp={handleClickSignUp}
             />
           </ul>
         </div>
         {user ? (
-          <div className="dropdown-bottom dropdown-end dropdown-hover  dropdown navbar-end mr-4 hidden md:flex    ">
+          <div className="dropdown dropdown-bottom dropdown-end  navbar-end dropdown-hover mr-4 hidden md:flex    ">
             <label className="  btn-ghost btn-square btn  ">
               <svg
                 width="24px"

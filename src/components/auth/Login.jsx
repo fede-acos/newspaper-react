@@ -2,6 +2,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase-config";
+import Footer from "../Footer";
 import NavbarAuth from "./NavbarAuth";
 
 function Login() {
@@ -23,9 +24,9 @@ function Login() {
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-base-200">
       <NavbarAuth />
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero mt-16 mb-20  ">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card w-full max-w-sm flex-shrink-0 bg-base-100 shadow-2xl">
             <form onSubmit={handleSubmit} className="card-body">
@@ -70,7 +71,8 @@ function Login() {
           </div>
         </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import IndividualNews from "./IndividualNews";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { saveNews } from "../features/news/newsSlice";
+import ErrorPage from "./ErrorPage";
+import IndividualNews from "./IndividualNews";
 import MainArticle from "./MainArticle";
 
-function TopNews({ data, isLoading }) {
+function TopNews({ data, isLoading, isError, error }) {
   const dispatch = useDispatch();
   const { mainNews, sideNews } = useSelector((state) => state.news.newsState);
 
@@ -16,18 +16,18 @@ function TopNews({ data, isLoading }) {
 
   if (isLoading)
     return (
-      <div className="flex place-content-center mt-5">
-        <button className="btn loading w-18">loading</button>
+      <div className="mt-5 flex h-[100vh] place-content-center">
+        <button className="w-18 loading btn"> Loading</button>
       </div>
     );
 
   return (
     <>
-      <div className=" md:grid md:grid-cols-my-columns p-2 2xl:pl-24 2xl:pr-24 mt-10 2xl:mt-32">
+      <div className=" mt-10 p-2 md:grid md:grid-cols-my-columns 2xl:mt-32 2xl:pl-24 2xl:pr-24">
         <MainArticle news={mainNews} />
         <div>
-          <div className=" bg-primary hover:bg-primary-focus p-2 font-bold rounded max-w-fit relative left-2">
-            <h1 className="text-primary-content  text-sm ">TOP NEWS</h1>
+          <div className=" relative left-2 max-w-fit rounded bg-primary p-2 font-bold hover:bg-primary-focus">
+            <h1 className="text-sm  text-primary-content ">TOP NEWS</h1>
           </div>
           {sideNews.map((news) => {
             return <IndividualNews key={news.url} news={news} />;
