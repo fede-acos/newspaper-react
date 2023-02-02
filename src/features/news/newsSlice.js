@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { sideNewsArray } from "../../components/utilities/createSideNewsArray";
 import {
   filterEmptyNews,
   selectMainArticle,
 } from "../../components/utilities/filterNews";
-import { sideNewsArray } from "../../components/utilities/createSideNewsArray";
 
 const initialState = {
   newsState: { news: [], mainNews: {}, sideNews: [] },

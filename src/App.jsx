@@ -5,7 +5,7 @@
 
 import React from "react";
 import { useSelector } from "react-redux";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
 import ErrorPage from "./components/ErrorPage";
@@ -13,6 +13,7 @@ import Home from "./components/Home";
 
 function App() {
   const { user } = useSelector((state) => state.auth);
+  console.log(user);
 
   console.log(user ? "not empty" : "empty");
 

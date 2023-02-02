@@ -12,7 +12,7 @@ export const sectionSlice = createSlice({
       state.section = action.payload;
     },
     resetSection: (state) => {
-      state = "world";
+      state.section = "world";
     },
   },
 });

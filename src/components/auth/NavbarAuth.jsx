@@ -5,7 +5,7 @@ function NavbarAuth() {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <a href="/" className="btn-ghost btn normal-case xl:text-3xl">
+        <a href="/" className="btn-ghost btn text-2xl">
           The News Times
         </a>
       </div>

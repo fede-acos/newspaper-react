@@ -1,16 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BtnDarkModeToggle from "./BtnDarkModeToggle";
 import NavBarItems from "./NavBarItems";
 
 const Navbar = ({ user, logOut }) => {
-  const [toggleNavbar, setToggleNavbar] = useState(false);
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const navigate = useNavigate();
+  const dropdownRef = useRef(null);
+  const btnDropdownRef = useRef(null);
 
   function handleClick() {
-    setToggleNavbar((prev) => !prev);
+    setIsDropDownOpen((prev) => !prev);
   }
 
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (
+        event.target === btnDropdownRef.current ||
+        event.target.parentElement === btnDropdownRef.current
+        // if we are clicking  the close dropdown btn returns
+      )
+        return;
+      setIsDropDownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, []);
   const handleClickLogIn = () => navigate("/login");
   const handleClickSignUp = () => navigate("/signup");
 
@@ -24,6 +46,7 @@ const Navbar = ({ user, logOut }) => {
               onClick={handleClick}
             >
               <svg
+                ref={btnDropdownRef}
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
                 fill="none"
@@ -38,9 +61,13 @@ const Navbar = ({ user, logOut }) => {
                 />
               </svg>
             </button>
-            {toggleNavbar ? (
-              <ul className="menu rounded-box absolute z-10 w-52 justify-center bg-base-100 p-2 shadow-xl ">
+            {isDropDownOpen ? (
+              <ul
+                ref={dropdownRef}
+                className="menu rounded-box absolute z-10 w-52 justify-center bg-base-200 p-2 shadow-xl  "
+              >
                 <NavBarItems
+                  user={user}
                   handleClickLogIn={handleClickLogIn}
                   handleClickSignUp={handleClickSignUp}
                 />
@@ -56,15 +83,16 @@ const Navbar = ({ user, logOut }) => {
           <BtnDarkModeToggle style={"pr-2 hover:opacity-90 md:hidden   "} />
         </div>
         <div className="navbar-center hidden 2xl:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul ref={dropdownRef} className="menu menu-horizontal px-1">
             <NavBarItems
+              user={user}
               handleClickLogIn={handleClickLogIn}
               handleClickSignUp={handleClickSignUp}
             />
           </ul>
         </div>
         {user ? (
-          <div className="dropdown-bottom dropdown-end dropdown-hover  dropdown navbar-end mr-4 hidden md:flex    ">
+          <div className="dropdown dropdown-bottom dropdown-end  navbar-end dropdown-hover mr-4 hidden md:flex    ">
             <label className="  btn-ghost btn-square btn  ">
               <svg
                 width="24px"
