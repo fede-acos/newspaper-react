@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { paginate } from "./utilities/paginateRelatedNews";
-
 function RelatedNews({ isLoading }) {
   const [relatedNews, setRelatedNews] = useState([]);
 
@@ -63,8 +62,6 @@ function RelatedNews({ isLoading }) {
                 />
                 <div className="absolute bottom-0 left-0 rounded bg-neutral p-1.5 font-bold hover:bg-neutral-focus">
                   <h1 className="text-sm text-white ">
-                <div className="absolute bottom-0 left-0 bg-neutral hover:bg-neutral-focus p-1.5 font-bold rounded">
-                  <h1 className="text-white text-sm ">
                     {news.section.toUpperCase()}
                   </h1>
                 </div>
@@ -76,7 +73,6 @@ function RelatedNews({ isLoading }) {
       <div className="mt-8 mb-8 flex w-full place-content-center 2xl:mt-32 2xl:mb-2">
         <button
           className="btn-sm btn md:btn-md "
-          className="btn btn-sm md:btn-md "
           onClick={() => setPage((prevPage) => prevPage + 1)}
           disabled={page >= numberOfPages}
         >
