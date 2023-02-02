@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { paginate } from "./utilities/paginateRelatedNews";
+
 function RelatedNews({ isLoading }) {
   const [relatedNews, setRelatedNews] = useState([]);
 
@@ -20,13 +21,12 @@ function RelatedNews({ isLoading }) {
   useEffect(() => {
     setPage(1);
     setRelatedNews(paginatedNews);
-    console.log(1);
   }, [news]);
 
   useEffect(() => {
     if (
       page <= 1 ||
-      RelatedNews.some((element) => paginatedNews.includes(element))
+      relatedNews.some((element) => paginatedNews.includes(element))
     )
       return;
     setRelatedNews([...relatedNews, ...paginatedNews]);
@@ -39,37 +39,30 @@ function RelatedNews({ isLoading }) {
   if (isLoading) return <></>;
 
   return (
-    <div className="flex place-content-center flex-col xl:pr-24 xl:pl-24 2xl:mt-40 2xl:mb-40  ">
-      <div className="divider p-2 mt-5 mb-5 md:hidden"> </div>
+    <div className="flex flex-col place-content-center xl:pr-24 xl:pl-24 2xl:mt-40 2xl:mb-40  ">
+      <div className="divider mt-5 mb-5 p-2 md:hidden"> </div>
 
-      <div className=" bg-primary hover:bg-primary-focus p-2 font-bold rounded max-w-fit relative left-2">
-        <h1 className="text-primary-content  text-sm ">RELATED NEWS</h1>
+      <div className=" relative left-2 max-w-fit rounded bg-primary p-2 font-bold hover:bg-primary-focus">
+        <h1 className="text-sm  text-primary-content ">RELATED NEWS</h1>
       </div>
       {relatedNews?.map((news) => {
         return (
-          <article key={news.url} className="lg:mt-8 md:mt-4  mt-10   ">
-            <div className=" bg-base-100 shadow-xl p-2 md:flex md:flex-row-reverse md:justify-end rounded-box ">
-              <div>
-                <a className="" href={news.url}>
-                  <h2 className="card-title md:items-start xl:text-3xl md:text-2xl flex flex-col hover:underline text-center md:text-left ">
-                    {news.title}
-                  </h2>
-                </a>
-
-                <p className="md:block hidden "> {news.abstract}</p>
-              </div>
-
+          <article key={news.url} className="mt-10 md:mt-4  lg:mt-8   ">
+            <div className=" rounded-box bg-base-100 p-2 shadow-xl md:flex md:flex-row-reverse md:justify-end ">
+              <a className="" href={news.url}>
+                <h2 className="card-title flex flex-col text-center hover:underline md:items-start md:text-left md:text-2xl xl:text-3xl ">
+                  {news.title}
+                </h2>
+                <p className="hidden md:block "> {news.abstract}</p>
+              </a>
               <figure className="relative ">
-                <a href={news.url}>
-                  <img
-                    className="rounded xl:max-w-[500px] 2xl:max-w-[600px] sm:max-w-[400px] max-w-[100%] mr-4 md:mr-6 "
-                    src={news.multimedia[1].url}
-                    alt={news.multimedia[0].caption}
-                  />
-                </a>
-
-                <div className="absolute bottom-0 left-0 bg-primary hover:bg-primary-focus  p-1.5 font-bold rounded">
-                  <h1 className="text-white text-sm ">
+                <img
+                  className="mr-4 max-w-[100%] rounded sm:max-w-[400px] md:mr-6 xl:max-w-[500px] 2xl:max-w-[600px] "
+                  src={news.multimedia[1].url}
+                  alt={news.multimedia[0].caption}
+                />
+                <div className="absolute bottom-0 left-0 rounded bg-neutral p-1.5 font-bold hover:bg-neutral-focus">
+                  <h1 className="text-sm text-white ">
                     {news.section.toUpperCase()}
                   </h1>
                 </div>
@@ -78,9 +71,9 @@ function RelatedNews({ isLoading }) {
           </article>
         );
       })}
-      <div className="w-full flex place-content-center mt-8 mb-8 2xl:mt-32 2xl:mb-2">
+      <div className="mt-8 mb-8 flex w-full place-content-center 2xl:mt-32 2xl:mb-2">
         <button
-          className="btn btn-sm md:btn-md lg:btn-lg bg-primary hover:bg-primary-focus "
+          className="btn-sm btn md:btn-md "
           onClick={() => setPage((prevPage) => prevPage + 1)}
           disabled={page >= numberOfPages}
         >
