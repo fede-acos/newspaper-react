@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { filterEmptyNews } from "../componets/utilities/filterNews";
+import { filterEmptyNews } from "../components/utilities/filterNews";
 const API_KEY = "api-key=0gXtaZrp8R4zWDtkUXoV7M5teGuME70i";
 
 export const apiSlice = createApi({

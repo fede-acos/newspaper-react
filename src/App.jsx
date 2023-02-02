@@ -1,16 +1,24 @@
+//TODO
+//change the fonts for someting better
+//add the login y subscribe btn to the navbar in responsive mode
+//add the account btn if logged in
+
 import React from "react";
-import Login from "./componets/auth/Login";
-import SignUp from "./componets/auth/SignUp";
-import Home from "./componets/Home";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import ErrorPage from "./componets/ErrorPage";
 import { useSelector } from "react-redux";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Login from "./components/auth/Login";
+import SignUp from "./components/auth/SignUp";
+import ErrorPage from "./components/ErrorPage";
+import Home from "./components/Home";
 
 function App() {
   const { user } = useSelector((state) => state.auth);
+  console.log(user);
+
+  console.log(user ? "not empty" : "empty");
 
   const RequiredAuth = ({ children }) => {
-    //use this for the accuount page
+    //use this for the pages than need to be logged in
     return user ? children : <Navigate to="/login" />;
   };
   const UserLoggedInRedirect = ({ children }) => {
