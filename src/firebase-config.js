@@ -8,7 +8,7 @@ import { getAuth } from "firebase/auth";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC2Fwu2mmJfgs0XXkX-lM2yYpaQKflL0Ao",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "newspaper-react-fac32.firebaseapp.com",
   projectId: "newspaper-react-fac32",
   storageBucket: "newspaper-react-fac32.appspot.com",

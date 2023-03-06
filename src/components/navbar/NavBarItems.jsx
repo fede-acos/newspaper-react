@@ -11,7 +11,7 @@ function NavBarItems({ handleClickLogIn, handleClickSignUp, user }) {
 
   return (
     <>
-      <li className="bg-base-200">
+      <li className="bg-base-200 xl:bg-base-100">
         <a
           className="cursor-pointer"
           onClick={() => handleSectionChange("world")}
@@ -19,7 +19,7 @@ function NavBarItems({ handleClickLogIn, handleClickSignUp, user }) {
           World
         </a>
       </li>
-      <li className="bg-base-200">
+      <li className="bg-base-200 xl:bg-base-100">
         <a
           className="cursor-pointer"
           onClick={() => handleSectionChange("politics")}
@@ -28,7 +28,7 @@ function NavBarItems({ handleClickLogIn, handleClickSignUp, user }) {
         </a>
       </li>
 
-      <li className="bg-base-200">
+      <li className="bg-base-200 xl:bg-base-100">
         <a
           className="cursor-pointer"
           onClick={() => handleSectionChange("business")}
@@ -36,7 +36,7 @@ function NavBarItems({ handleClickLogIn, handleClickSignUp, user }) {
           Business
         </a>
       </li>
-      <li className="bg-base-200">
+      <li className="bg-base-200 xl:bg-base-100">
         <a
           className="cursor-pointer"
           onClick={() => handleSectionChange("technology")}
@@ -45,7 +45,7 @@ function NavBarItems({ handleClickLogIn, handleClickSignUp, user }) {
         </a>
       </li>
 
-      <li className="bg-base-200">
+      <li className="bg-base-200 xl:bg-base-100">
         <a
           className="cursor-pointer"
           onClick={() => handleSectionChange("science")}
@@ -53,7 +53,7 @@ function NavBarItems({ handleClickLogIn, handleClickSignUp, user }) {
           Science
         </a>
       </li>
-      <li className="bg-base-200">
+      <li className="bg-base-200 xl:bg-base-100">
         <a
           className="cursor-pointer"
           onClick={() => handleSectionChange("sports")}
@@ -62,7 +62,7 @@ function NavBarItems({ handleClickLogIn, handleClickSignUp, user }) {
         </a>
       </li>
 
-      <li className="bg-base-200">
+      <li className="bg-base-200 xl:bg-base-100">
         <a
           className="cursor-pointer"
           onClick={() => handleSectionChange("movies")}
@@ -70,20 +70,20 @@ function NavBarItems({ handleClickLogIn, handleClickSignUp, user }) {
           Movies
         </a>
       </li>
-      <div className=" flex gap-1 bg-base-200  md:hidden">
+      <div className=" flex gap-1 bg-base-200 md:hidden  xl:bg-base-100">
         {user ? (
-          <li className="bg-base-300">
+          <li className="bg-base-300 xl:bg-base-100">
             <a> {user.email}</a>
           </li>
         ) : (
           //need to create a dropdown to logout
           <>
-            <li className="rounded-lg bg-primary pl-2 text-primary-content">
+            <li className="rounded-lg bg-primary pl-2 text-primary-content xl:bg-base-100">
               <a onClick={handleClickSignUp} className="cursor-pointer">
                 Subscribe
               </a>
             </li>
-            <li className="rounded-lg bg-neutral text-neutral-content">
+            <li className="rounded-lg bg-neutral text-neutral-content xl:bg-base-100">
               <a onClick={handleClickLogIn} className="cursor-pointer">
                 Login
               </a>

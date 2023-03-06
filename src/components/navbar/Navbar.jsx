@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Overlay from "../Overlay";
 import BtnDarkModeToggle from "./BtnDarkModeToggle";
 import NavBarItems from "./NavBarItems";
 
@@ -12,8 +13,12 @@ const Navbar = ({ user, logOut }) => {
   function handleClick() {
     setIsDropDownOpen((prev) => !prev);
   }
+  useEffect(() => {
+    console.log(isDropDownOpen);
+  }, [isDropDownOpen]);
 
   const handleClickOutside = (event) => {
+    console.log("trigger");
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       if (
         event.target === btnDropdownRef.current ||
@@ -25,22 +30,19 @@ const Navbar = ({ user, logOut }) => {
     }
   };
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("touchstart", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
-    };
-  }, []);
   const handleClickLogIn = () => navigate("/login");
   const handleClickSignUp = () => navigate("/signup");
 
   return (
     <>
       <nav className="space-between navbar content-center items-center bg-base-100 pt-6">
-        <div className="navbar-start w-[100%] justify-between md:w-[50%] md:justify-start">
-          <div className="dropdown ">
+        <Overlay
+          handleClick={handleClick}
+          dropdownRef={dropdownRef}
+          isDropDownOpen={isDropDownOpen}
+        />
+        <div className="navbar-start w-full justify-between md:w-[50%] md:justify-start">
+          <div className="dropdown relative ">
             <button
               className="btn-ghost btn h-8 pl-2 pr-2 xl:h-12 xl:pl-4 xl:pr-4 2xl:hidden"
               onClick={handleClick}
@@ -62,10 +64,7 @@ const Navbar = ({ user, logOut }) => {
               </svg>
             </button>
             {isDropDownOpen ? (
-              <ul
-                ref={dropdownRef}
-                className="menu rounded-box absolute z-10 w-52 justify-center bg-base-200 p-2 shadow-xl  "
-              >
+              <ul ref={dropdownRef} className=" absolute  z-10">
                 <NavBarItems
                   user={user}
                   handleClickLogIn={handleClickLogIn}
@@ -92,7 +91,7 @@ const Navbar = ({ user, logOut }) => {
           </ul>
         </div>
         {user ? (
-          <div className="dropdown dropdown-bottom dropdown-end  navbar-end dropdown-hover mr-4 hidden md:flex    ">
+          <div className="dropdown-bottom dropdown-end dropdown-hover  dropdown navbar-end mr-4 hidden md:flex ">
             <label className="  btn-ghost btn-square btn  ">
               <svg
                 width="24px"
