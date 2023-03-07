@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Overlay from "../Overlay";
+import { saveSection } from "../../features/section/sectionSlice";
 import BtnDarkModeToggle from "./BtnDarkModeToggle";
 import NavBarItems from "./NavBarItems";
+import Overlay from "./Overlay";
 
 const Navbar = ({ user, logOut }) => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
@@ -10,12 +12,15 @@ const Navbar = ({ user, logOut }) => {
   const dropdownRef = useRef(null);
   const btnDropdownRef = useRef(null);
 
+  const dispatch = useDispatch();
+
+  function handleSectionChange(section) {
+    dispatch(saveSection(section));
+    setIsDropDownOpen(false);
+  }
   function handleClick() {
     setIsDropDownOpen((prev) => !prev);
   }
-  useEffect(() => {
-    console.log(isDropDownOpen);
-  }, [isDropDownOpen]);
 
   const handleClickOutside = (event) => {
     console.log("trigger");
@@ -30,6 +35,15 @@ const Navbar = ({ user, logOut }) => {
     }
   };
 
+  /*   useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, []); */
+
   const handleClickLogIn = () => navigate("/login");
   const handleClickSignUp = () => navigate("/signup");
 
@@ -37,6 +51,7 @@ const Navbar = ({ user, logOut }) => {
     <>
       <nav className="space-between navbar content-center items-center bg-base-100 pt-6">
         <Overlay
+          handleSectionChange={handleSectionChange}
           handleClick={handleClick}
           dropdownRef={dropdownRef}
           isDropDownOpen={isDropDownOpen}
@@ -63,17 +78,6 @@ const Navbar = ({ user, logOut }) => {
                 />
               </svg>
             </button>
-            {isDropDownOpen ? (
-              <ul ref={dropdownRef} className=" absolute  z-10">
-                <NavBarItems
-                  user={user}
-                  handleClickLogIn={handleClickLogIn}
-                  handleClickSignUp={handleClickSignUp}
-                />
-              </ul>
-            ) : (
-              <div />
-            )}
           </div>
           <a className="btn-ghost btn ml-[2%] pl-3 pr-3 text-3xl normal-case sm:text-4xl xl:pl-4  xl:pr-4 2xl:text-5xl ">
             <h1> The News Times</h1>
@@ -84,6 +88,7 @@ const Navbar = ({ user, logOut }) => {
         <div className="navbar-center hidden 2xl:flex">
           <ul ref={dropdownRef} className="menu menu-horizontal px-1">
             <NavBarItems
+              handleSectionChange={handleSectionChange}
               user={user}
               handleClickLogIn={handleClickLogIn}
               handleClickSignUp={handleClickSignUp}

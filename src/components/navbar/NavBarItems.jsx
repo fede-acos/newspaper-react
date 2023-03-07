@@ -1,75 +1,25 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { saveSection } from "../../features/section/sectionSlice";
+import items from "./itemsNavbar";
 
-function NavBarItems({ handleClickLogIn, handleClickSignUp, user }) {
-  const dispatch = useDispatch();
-
-  function handleSectionChange(section) {
-    dispatch(saveSection(section));
-  }
-
+function NavBarItems({
+  handleClickLogIn,
+  handleClickSignUp,
+  user,
+  handleSectionChange,
+}) {
   return (
     <>
-      <li className="bg-base-200 xl:bg-base-100">
-        <a
-          className="cursor-pointer"
-          onClick={() => handleSectionChange("world")}
-        >
-          World
-        </a>
-      </li>
-      <li className="bg-base-200 xl:bg-base-100">
-        <a
-          className="cursor-pointer"
-          onClick={() => handleSectionChange("politics")}
-        >
-          Politics
-        </a>
-      </li>
+      {items.map((item) => (
+        <li key={item.name} className="bg-base-200 xl:bg-base-100">
+          <a
+            className="cursor-pointer"
+            onClick={() => handleSectionChange(item.value)}
+          >
+            {item.name}
+          </a>
+        </li>
+      ))}
 
-      <li className="bg-base-200 xl:bg-base-100">
-        <a
-          className="cursor-pointer"
-          onClick={() => handleSectionChange("business")}
-        >
-          Business
-        </a>
-      </li>
-      <li className="bg-base-200 xl:bg-base-100">
-        <a
-          className="cursor-pointer"
-          onClick={() => handleSectionChange("technology")}
-        >
-          Technology
-        </a>
-      </li>
-
-      <li className="bg-base-200 xl:bg-base-100">
-        <a
-          className="cursor-pointer"
-          onClick={() => handleSectionChange("science")}
-        >
-          Science
-        </a>
-      </li>
-      <li className="bg-base-200 xl:bg-base-100">
-        <a
-          className="cursor-pointer"
-          onClick={() => handleSectionChange("sports")}
-        >
-          Sports
-        </a>
-      </li>
-
-      <li className="bg-base-200 xl:bg-base-100">
-        <a
-          className="cursor-pointer"
-          onClick={() => handleSectionChange("movies")}
-        >
-          Movies
-        </a>
-      </li>
       <div className=" flex gap-1 bg-base-200 md:hidden  xl:bg-base-100">
         {user ? (
           <li className="bg-base-300 xl:bg-base-100">
