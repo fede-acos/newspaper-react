@@ -36,16 +36,16 @@ function Overlay({
           </g>
         </svg>
       </button>
-      <ul className=" absolute top-20 flex w-full flex-col items-center p-2 ">
+      <ul className=" absolute top-20 flex w-full flex-col items-center gap-2 p-2 ">
         <span className="mb-4 h-[1px] w-[90%] bg-base-content opacity-20"></span>
         {items.map((item) => (
           <>
             <li
               key={item.name}
-              className={`text w-full rounded-md p-2 pl-4 text-left text-xl text-base-content sm:text-2xl ${
+              className={` w-full rounded-md  p-2 pl-4 text-left text-xl text-base-content sm:text-2xl ${
                 section === item.value
-                  ? "bg-slate-700 text-gray-50 dark:bg-slate-400 dark:text-zinc-800"
-                  : "hover:bg-base-200  focus:bg-base-200   active:bg-base-200"
+                  ? "text-base-50 bg-base-300"
+                  : "hover:text-base-50 focus-within:bg-base-200 hover:bg-base-200"
               }`}
             >
               <a
