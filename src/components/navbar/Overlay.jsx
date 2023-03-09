@@ -12,7 +12,7 @@ function Overlay({
 
   return (
     <div
-      className={`fixed top-0 left-0 z-10 h-full w-[50%]  -translate-x-full bg-base-100 md:w-[40%] lg:w-[30%] xl:w-[20%] ${
+      className={`fixed top-0 left-0 z-10 h-full w-[50%] -translate-x-full rounded  bg-base-100 shadow-sm shadow-base-content md:w-[40%] lg:w-[30%] xl:w-[20%] ${
         isDropDownOpen ? "translate-x-0" : ""
       } `}
     >
@@ -26,7 +26,7 @@ function Overlay({
           width="20px"
           height="20px"
           aria-hidden="true'"
-          className="fill-current"
+          className="fill-base-content hover:opacity-90"
         >
           <g stroke="none" stroke-width="1" fill-rule="evenodd">
             <polygon
@@ -45,7 +45,7 @@ function Overlay({
               className={` w-full rounded-md  p-2 pl-4 text-left text-xl text-base-content sm:text-2xl ${
                 section === item.value
                   ? "text-base-50 bg-base-300"
-                  : "hover:text-base-50 focus-within:bg-base-200 hover:bg-base-200"
+                  : "hover:text-base-50 hover:bg-base-200 active:bg-base-200"
               }`}
             >
               <a
