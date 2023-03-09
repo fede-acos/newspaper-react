@@ -1,5 +1,5 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetNewsQuery } from "../api/apiSlice";
 import { login, logOut } from "../features/auth/authSlice";
@@ -16,10 +16,10 @@ function Home() {
   const [user, setUser] = useState({});
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     signOut(auth);
     dispatch(logOut());
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
@@ -34,7 +34,7 @@ function Home() {
         );
       }
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
