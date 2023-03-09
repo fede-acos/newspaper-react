@@ -16,8 +16,8 @@ function Home() {
   const [user, setUser] = useState({});
   const dispatch = useDispatch();
 
-  const logOut = async () => {
-    await signOut(auth);
+  const handleLogout = () => {
+    signOut(auth);
     dispatch(logOut());
   };
 
@@ -41,21 +41,20 @@ function Home() {
       {isError ? (
         <ErrorPage />
       ) : (
-        <>
-          <div className="sm:pl-4 sm:pr-4">
-            <Navbar user={user} logOut={logOut} />
-            <TopNews
-              data={data}
-              isLoading={isLoading}
-              isError={isError}
-              error={error}
-            />
-            <RelatedNews isLoading={isLoading} />
-          </div>
+        <div className="sm:pl-4 sm:pr-4">
+          <Navbar user={user} logOut={handleLogout} />
+          <TopNews
+            data={data}
+            isLoading={isLoading}
+            isError={isError}
+            error={error}
+          />
+          <RelatedNews isLoading={isLoading} />
           <Footer isLoading={isLoading} />
-        </>
+        </div>
       )}
     </>
   );
 }
+
 export default Home;
