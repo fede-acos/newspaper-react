@@ -17,7 +17,7 @@ function Overlay({
       } `}
     >
       <button
-        className="absolute top-5 right-4  opacity-90"
+        className="absolute top-6 right-4  opacity-90"
         onClick={() => handleClick()}
         ref={dropdownRef}
       >
