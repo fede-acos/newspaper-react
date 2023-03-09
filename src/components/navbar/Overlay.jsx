@@ -1,6 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import items from "./itemsNavbar";
+
+import { useSelector } from "react-redux";
 
 function Overlay({
   handleClick,
@@ -28,9 +29,9 @@ function Overlay({
           aria-hidden="true'"
           className="fill-base-content hover:opacity-90"
         >
-          <g stroke="none" stroke-width="1" fill-rule="evenodd">
+          <g stroke="none" strokeWidth="1" fillRule="evenodd">
             <polygon
-              fill-rule="nonzero"
+              fillRule="nonzero"
               points="33.4 0 19 14.4 4.601 0 0 4.6 14.4 19 0 33.4 4.6 38 19 23.6 33.4 38 38 33.399 23.6 18.999 38 4.6"
             ></polygon>
           </g>
@@ -39,23 +40,21 @@ function Overlay({
       <ul className=" absolute top-20 flex w-full flex-col items-center gap-2 p-2 ">
         <span className="mb-4 h-[1px] w-[90%] bg-base-content opacity-20"></span>
         {items.map((item) => (
-          <>
-            <li
-              key={item.name}
-              className={` w-full rounded-md  p-2 pl-4 text-left text-xl text-base-content sm:text-2xl ${
-                section === item.value
-                  ? "text-base-50 bg-base-300"
-                  : "hover:text-base-50 hover:bg-base-200 active:bg-base-200"
-              }`}
+          <li
+            key={item.name}
+            className={` w-full rounded-md  p-2 pl-4 text-left text-xl text-base-content sm:text-2xl ${
+              section === item.value
+                ? "text-base-50 bg-base-300"
+                : "hover:text-base-50 hover:bg-base-200 active:bg-base-200"
+            }`}
+          >
+            <a
+              className="cursor-pointer"
+              onClick={() => handleSectionChange(item.value)}
             >
-              <a
-                className="cursor-pointer"
-                onClick={() => handleSectionChange(item.value)}
-              >
-                {item.name}
-              </a>
-            </li>
-          </>
+              {item.name}
+            </a>
+          </li>
         ))}
       </ul>
     </div>
