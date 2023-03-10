@@ -1,16 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { saveSection } from "../../features/section/sectionSlice";
 import BtnDarkModeToggle from "./BtnDarkModeToggle";
-import NavBarItems from "./NavBarItems";
-import Overlay from "./Overlay";
+import NavBarDesktop from "./NavBarDesktop";
+import NavBarMobile from "./NavBarMobile";
 
 const Navbar = ({ user, logOut }) => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
   const btnDropdownRef = useRef(null);
+
+  const { theme } = useSelector((state) => state.theme);
+
+  console.log(theme);
 
   const dispatch = useDispatch();
 
@@ -49,19 +53,21 @@ const Navbar = ({ user, logOut }) => {
 
   return (
     <>
-      <Overlay
+      <NavBarMobile
         handleSectionChange={handleSectionChange}
         handleClick={handleClick}
         dropdownRef={dropdownRef}
         isDropDownOpen={isDropDownOpen}
       />
       <div className="flex w-full justify-center pt-8">
-        <a className=" w-80 ">
-          <img src="/logoWhite.png" />
+        <a href="#" className=" w-60 md:w-80 ">
+          <img
+            src={`${theme === "dark" ? "/logoWhite.png" : "/logoDark.png"}`}
+          />
         </a>
       </div>
-      <nav className="space-between navbar  relative content-center items-center bg-base-100 pt-12">
-        <div className=" space-between navbar-start  w-full md:w-[50%] md:justify-start ">
+      <nav className=" navbar  relative content-center items-center bg-base-100 ">
+        <div className=" w-full  justify-between md:w-[50%] md:justify-start ">
           <div className="dropdown relative ">
             <button
               className="btn-ghost btn h-10 pl-2 pr-2 xl:h-12 xl:pl-4 xl:pr-4 2xl:hidden"
@@ -85,11 +91,11 @@ const Navbar = ({ user, logOut }) => {
             </button>
           </div>
 
-          <BtnDarkModeToggle style={"pr-2 hover:opacity-90 md:hidden   "} />
+          <BtnDarkModeToggle style={"md:pr-2 hover:opacity-90 md:hidden   "} />
         </div>
         <div className="navbar-center hidden 2xl:flex">
           <ul ref={dropdownRef} className="menu menu-horizontal px-1">
-            <NavBarItems
+            <NavBarDesktop
               handleSectionChange={handleSectionChange}
               user={user}
               handleClickLogIn={handleClickLogIn}
@@ -98,7 +104,7 @@ const Navbar = ({ user, logOut }) => {
           </ul>
         </div>
         {user ? (
-          <div className="dropdown-bottom dropdown-end dropdown-hover  dropdown navbar-end mr-4 hidden md:flex ">
+          <div className="dropdown-bottom dropdown-end dropdown-hover  dropdown navbar-end mr-4 hidden md:flex 2xl:w-[40%] ">
             <label className="  btn-ghost btn-square btn  ">
               <svg
                 viewBox="0 0 24 24"
