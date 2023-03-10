@@ -13,7 +13,7 @@ function NavBarMobile({
 
   return (
     <div
-      className={`fixed top-0 left-0 z-10 h-full w-[50%] -translate-x-full rounded  bg-base-100 shadow-sm shadow-base-content transition-transform md:w-[40%] lg:w-[30%] xl:w-[20%]  ${
+      className={`fixed top-0 left-0 z-10 h-full w-[50%] -translate-x-full rounded  bg-base-100 shadow-sm shadow-base-content transition-transform duration-200 md:w-[40%] lg:w-[30%] xl:w-[20%] ${
         isDropDownOpen ? "translate-x-0" : ""
       } `}
     >

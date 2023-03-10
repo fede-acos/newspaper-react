@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { saveSection } from "../../features/section/sectionSlice";
 import BtnDarkModeToggle from "./BtnDarkModeToggle";
+import Logo from "./Logo";
 import NavBarDesktop from "./NavBarDesktop";
 import NavBarMobile from "./NavBarMobile";
 
@@ -11,11 +12,6 @@ const Navbar = ({ user, logOut }) => {
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
   const btnDropdownRef = useRef(null);
-
-  const { theme } = useSelector((state) => state.theme);
-
-  console.log(theme);
-
   const dispatch = useDispatch();
 
   function handleSectionChange(section) {
@@ -60,10 +56,8 @@ const Navbar = ({ user, logOut }) => {
         isDropDownOpen={isDropDownOpen}
       />
       <div className="flex w-full justify-center pt-8">
-        <a href="#" className=" w-60 md:w-80 ">
-          <img
-            src={`${theme === "dark" ? "/logoWhite.png" : "/logoDark.png"}`}
-          />
+        <a className=" w-60 md:w-80 2xl:w-96  ">
+          <Logo />
         </a>
       </div>
       <nav className=" navbar  relative content-center items-center bg-base-100 ">
