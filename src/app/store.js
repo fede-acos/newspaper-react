@@ -1,9 +1,10 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import newsSlice from "../features/news/newsSlice";
-import { apiSlice } from "../api/apiSlice";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
-import sectionSlice from "../features/section/sectionSlice";
+import { apiSlice } from "../api/apiSlice";
 import authSlice from "../features/auth/authSlice";
+import newsSlice from "../features/news/newsSlice";
+import sectionSlice from "../features/section/sectionSlice";
+import themeSlice from "../features/theme/themeSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     news: newsSlice,
     [apiSlice.reducerPath]: apiSlice.reducer,
     auth: authSlice,
+    theme: themeSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),
