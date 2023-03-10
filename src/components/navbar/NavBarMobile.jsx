@@ -3,7 +3,7 @@ import items from "./itemsNavbar";
 
 import { useSelector } from "react-redux";
 
-function Overlay({
+function NavBarMobile({
   handleClick,
   dropdownRef,
   isDropDownOpen,
@@ -13,7 +13,7 @@ function Overlay({
 
   return (
     <div
-      className={`fixed top-0 left-0 z-10 h-full w-[50%] -translate-x-full rounded  bg-base-100 shadow-sm shadow-base-content md:w-[40%] lg:w-[30%] xl:w-[20%] ${
+      className={`fixed top-0 left-0 z-10 h-full w-[50%] -translate-x-full rounded  bg-base-100 shadow-sm shadow-base-content transition-transform md:w-[40%] lg:w-[30%] xl:w-[20%]  ${
         isDropDownOpen ? "translate-x-0" : ""
       } `}
     >
@@ -61,4 +61,4 @@ function Overlay({
   );
 }
 
-export default Overlay;
+export default NavBarMobile;

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  section: "world",
+  section: "home",
 };
 
 export const sectionSlice = createSlice({
@@ -12,7 +12,7 @@ export const sectionSlice = createSlice({
       state.section = action.payload;
     },
     resetSection: (state) => {
-      state.section = "world";
+      state.section = "home";
     },
   },
 });
