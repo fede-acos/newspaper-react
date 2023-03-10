@@ -18,11 +18,11 @@ function BtnDarkModeToggle({ style }) {
 
   return (
     <div className={style}>
-      <label className="swap btn-ghost swap-rotate btn-square btn h-5 self-center  ">
+      <label className="swap-rotate swap btn-ghost btn-square btn h-5 self-center  ">
         <input onClick={() => toggleTheme()} type="checkbox" />
 
         <svg
-          className="swap-on h-5 w-5 fill-current"
+          className="swap-on h-6 w-6 fill-current"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
