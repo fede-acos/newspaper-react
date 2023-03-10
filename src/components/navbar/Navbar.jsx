@@ -55,6 +55,11 @@ const Navbar = ({ user, logOut }) => {
         dropdownRef={dropdownRef}
         isDropDownOpen={isDropDownOpen}
       />
+      <div className="flex w-full justify-center pt-8">
+        <a className=" w-80 ">
+          <img src="/logoWhite.png" />
+        </a>
+      </div>
       <nav className="space-between navbar  relative content-center items-center bg-base-100 pt-12">
         <div className=" space-between navbar-start  w-full md:w-[50%] md:justify-start ">
           <div className="dropdown relative ">
@@ -79,9 +84,6 @@ const Navbar = ({ user, logOut }) => {
               </svg>
             </button>
           </div>
-          <a className="absolute left-1/3 top-6 w-80 2xl:static 2xl:-top-4 2xl:w-96 2xl:pb-14">
-            <img src="/logoWhite.png" />
-          </a>
 
           <BtnDarkModeToggle style={"pr-2 hover:opacity-90 md:hidden   "} />
         </div>
