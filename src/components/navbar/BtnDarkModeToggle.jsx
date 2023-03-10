@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { themeChange } from "theme-change";
+import { saveTheme } from "../../features/theme/themeSlice";
 
 function BtnDarkModeToggle({ style }) {
   const [theme, setTheme] = useState("light");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     themeChange(false);
@@ -14,11 +17,12 @@ function BtnDarkModeToggle({ style }) {
 
   useEffect(() => {
     document.querySelector("body").setAttribute("data-theme", theme);
+    dispatch(saveTheme(theme));
   }, [theme]);
 
   return (
     <div className={style}>
-      <label className="swap-rotate swap btn-ghost btn-square btn h-5 self-center  ">
+      <label className="swap btn-ghost swap-rotate btn-square btn h-5 self-center  ">
         <input onClick={() => toggleTheme()} type="checkbox" />
 
         <svg
