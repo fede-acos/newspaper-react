@@ -1,5 +1,9 @@
 const items = [
   {
+    name: "Home",
+    value: "home",
+  },
+  {
     name: "World",
     value: "world",
   },
