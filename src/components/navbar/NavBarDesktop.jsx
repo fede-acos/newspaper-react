@@ -26,7 +26,6 @@ function NavBarDesktop({
             <a> {user.email}</a>
           </li>
         ) : (
-          //need to create a dropdown to logout
           <>
             <li className="rounded-lg bg-primary pl-2 text-primary-content xl:bg-base-100">
               <a onClick={handleClickSignUp} className="cursor-pointer">

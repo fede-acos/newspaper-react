@@ -1,4 +1,5 @@
-import React from "react";
+import React, { memo } from "react";
+
 import items from "./itemsNavbar";
 
 import { useSelector } from "react-redux";
@@ -9,6 +10,8 @@ function NavBarMobile({
   isDropDownOpen,
   handleSectionChange,
   user,
+  handleClickLogIn,
+  handleClickSignUp,
 }) {
   const { section } = useSelector((state) => state.section);
 
@@ -57,7 +60,24 @@ function NavBarMobile({
             </a>
           </li>
         ))}
-        <li>{user.email}</li>
+        {user ? (
+          <li>{user.email}</li>
+        ) : (
+          <>
+            <li
+              onClick={handleClickLogIn}
+              className="btn-primary btn mt-10  w-full  cursor-pointer  rounded-md p-1  text-center text-xl  sm:text-2xl md:hidden"
+            >
+              Log In
+            </li>
+            <li
+              onClick={handleClickSignUp}
+              className=" btn w-full  rounded-md  p-1 text-center text-xl  sm:text-2xl md:hidden"
+            >
+              Subscribe
+            </li>
+          </>
+        )}
       </ul>
     </div>
   );

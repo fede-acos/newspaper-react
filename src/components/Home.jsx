@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetNewsQuery } from "../api/apiSlice";
 import { login, logOut } from "../features/auth/authSlice";
-import { auth, database } from "../firebase-config";
+import { auth } from "../firebase-config";
 import ErrorPage from "./ErrorPage";
 import Footer from "./Footer";
 import Navbar from "./navbar/Navbar";
@@ -21,19 +21,6 @@ function Home() {
     signOut(auth);
     dispatch(logOut());
   }, [dispatch]);
-
-  useEffect(() => {
-    writeUserData(3, "fede", "fede-cs@live.com", "www.google.com");
-    return console.log("succes");
-  }, []);
-
-  function writeUserData(userId, name, email, savedNews) {
-    set(ref(database, "users/" + userId), {
-      username: name,
-      email: email,
-      savedNews: savedNews,
-    });
-  }
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {

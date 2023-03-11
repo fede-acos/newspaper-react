@@ -55,9 +55,11 @@ const Navbar = ({ user, logOut }) => {
         dropdownRef={dropdownRef}
         isDropDownOpen={isDropDownOpen}
         user={user}
+        handleClickLogIn={handleClickLogIn}
+        handleClickSignUp={handleClickSignUp}
       />
-      <div className="flex w-full justify-center pt-8">
-        <a className=" w-60 md:w-80 2xl:w-96  ">
+      <div className="flex w-full justify-center pt-8 pb-6 2xl:pb-0">
+        <a className=" w-60 sm:w-80 xl:w-96  ">
           <Logo />
         </a>
       </div>
