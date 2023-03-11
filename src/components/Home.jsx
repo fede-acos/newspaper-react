@@ -1,5 +1,4 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { ref, set } from "firebase/database";
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetNewsQuery } from "../api/apiSlice";
@@ -11,6 +10,7 @@ import Navbar from "./navbar/Navbar";
 import RelatedNews from "./RelatedNews";
 import TopNews from "./TopNews";
 
+// need to add a btn to go to the top or a floating btn for the mobile navbar
 function Home() {
   const { section } = useSelector((state) => state.section);
   const { data, isLoading, isError, error } = useGetNewsQuery(section);
