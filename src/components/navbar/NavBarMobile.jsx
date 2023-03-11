@@ -8,6 +8,7 @@ function NavBarMobile({
   dropdownRef,
   isDropDownOpen,
   handleSectionChange,
+  user,
 }) {
   const { section } = useSelector((state) => state.section);
 
@@ -56,6 +57,7 @@ function NavBarMobile({
             </a>
           </li>
         ))}
+        <li>{user.email}</li>
       </ul>
     </div>
   );

@@ -1,5 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+
+import { getDatabase } from "firebase/database";
+
 import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -15,7 +18,11 @@ const firebaseConfig = {
   messagingSenderId: "814970518276",
   appId: "1:814970518276:web:887f4e44b9678b8d562e51",
   measurementId: "G-61MNNJC4CG",
+  databaseURL: "https://newspaper-react-fac32-default-rtdb.firebaseio.com/",
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+export const database = getDatabase(app);
+
 export const auth = getAuth(app);
