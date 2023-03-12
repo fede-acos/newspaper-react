@@ -6,17 +6,17 @@ import { useSelector } from "react-redux";
 
 function NavBarMobile({
   handleClick,
-  dropdownRef,
   isDropDownOpen,
   handleSectionChange,
+  dropdownRef,
   user,
   handleClickLogIn,
   handleClickSignUp,
 }) {
   const { section } = useSelector((state) => state.section);
-
   return (
     <div
+      ref={dropdownRef}
       className={`fixed top-0 left-0 z-10 h-full w-[50%] -translate-x-full rounded  bg-base-100 shadow-sm shadow-base-content transition-transform duration-200 md:w-[40%] lg:w-[30%] xl:w-[20%] ${
         isDropDownOpen ? "translate-x-0" : ""
       } `}
@@ -24,7 +24,6 @@ function NavBarMobile({
       <button
         className="absolute top-6 right-4  opacity-90"
         onClick={() => handleClick()}
-        ref={dropdownRef}
       >
         <svg
           viewBox="0 0 38 38"

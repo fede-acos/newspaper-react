@@ -11,7 +11,6 @@ const Navbar = ({ user, logOut }) => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
-  const btnDropdownRef = useRef(null);
   const dispatch = useDispatch();
 
   function handleSectionChange(section) {
@@ -25,24 +24,19 @@ const Navbar = ({ user, logOut }) => {
   const handleClickOutside = (event) => {
     console.log("trigger");
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-      if (
-        event.target === btnDropdownRef.current ||
-        event.target.parentElement === btnDropdownRef.current
-        // if we are clicking  the close dropdown btn returns
-      )
-        return;
       setIsDropDownOpen(false);
     }
   };
+  console.log(dropdownRef);
 
-  /*   useEffect(() => {
+  useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("touchstart", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("touchstart", handleClickOutside);
     };
-  }, []); */
+  }, []);
 
   const handleClickLogIn = () => navigate("/login");
   const handleClickSignUp = () => navigate("/signup");
@@ -52,8 +46,8 @@ const Navbar = ({ user, logOut }) => {
       <NavBarMobile
         handleSectionChange={handleSectionChange}
         handleClick={handleClick}
-        dropdownRef={dropdownRef}
         isDropDownOpen={isDropDownOpen}
+        dropdownRef={dropdownRef}
         user={user}
         handleClickLogIn={handleClickLogIn}
         handleClickSignUp={handleClickSignUp}
@@ -71,7 +65,6 @@ const Navbar = ({ user, logOut }) => {
               onClick={handleClick}
             >
               <svg
-                ref={btnDropdownRef}
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-8 w-8"
                 fill="none"
@@ -91,7 +84,7 @@ const Navbar = ({ user, logOut }) => {
           <BtnDarkModeToggle style={"md:pr-2 hover:opacity-90 md:hidden   "} />
         </div>
         <div className="navbar-center hidden 2xl:flex">
-          <ul ref={dropdownRef} className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1">
             <NavBarDesktop
               handleSectionChange={handleSectionChange}
               user={user}

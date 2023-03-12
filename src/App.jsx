@@ -13,14 +13,12 @@ import Home from "./components/Home";
 
 function App() {
   const { user } = useSelector((state) => state.auth);
-  console.log(user);
 
-  console.log(user ? "not empty" : "empty");
+  //const RequiredAuth = ({ children }) => {
+  // for the pages than need to be logged in
+  //return user ? children : <Navigate to="/login" />;
+  //};
 
-  const RequiredAuth = ({ children }) => {
-    //use this for the pages than need to be logged in
-    return user ? children : <Navigate to="/login" />;
-  };
   const UserLoggedInRedirect = ({ children }) => {
     return user ? <Navigate to="/" /> : children;
   };
