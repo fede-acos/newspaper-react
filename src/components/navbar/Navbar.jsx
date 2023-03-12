@@ -17,6 +17,7 @@ const Navbar = ({ user, logOut }) => {
     dispatch(saveSection(section));
     setIsDropDownOpen(false);
   }
+
   function handleClick() {
     setIsDropDownOpen((prev) => !prev);
   }
@@ -27,7 +28,6 @@ const Navbar = ({ user, logOut }) => {
       setIsDropDownOpen(false);
     }
   };
-  console.log(dropdownRef);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
