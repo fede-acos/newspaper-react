@@ -60,7 +60,9 @@ function NavBarMobile({
           </li>
         ))}
         {user ? (
-          <li>{user.email}</li>
+          <li className="text-base-50 w-full bg-base-300 p-2 text-center text-lg sm:text-2xl md:hidden">
+            {user.email}
+          </li>
         ) : (
           <>
             <li

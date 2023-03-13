@@ -1,7 +1,8 @@
 //TODO
 //change the fonts for someting better
-//add the login y subscribe btn to the navbar in responsive mode
-//add the account btn if logged in
+//make the login pages look better
+//add the login y subscribe btn to the navbar in responsive mode !DONE
+//add the account btn if logged in !DONE
 
 import React from "react";
 import { useSelector } from "react-redux";
@@ -20,6 +21,7 @@ function App() {
   //};
 
   const UserLoggedInRedirect = ({ children }) => {
+    console.log(user);
     return user ? <Navigate to="/" /> : children;
   };
   return (

@@ -23,7 +23,6 @@ const Navbar = ({ user, logOut }) => {
   }
 
   const handleClickOutside = (event) => {
-    console.log("trigger");
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsDropDownOpen(false);
     }
@@ -95,7 +94,7 @@ const Navbar = ({ user, logOut }) => {
         </div>
         {user ? (
           <div className=" navbar-end mr-4 hidden md:flex 2xl:w-[40%]">
-            <div className="dropdown-bottom dropdown-end   dropdown-hover dropdown ">
+            <div className="dropdown dropdown-bottom   dropdown-end dropdown-hover ">
               <label className="   btn-ghost btn-square btn   ">
                 <svg
                   viewBox="0 0 24 24"
