@@ -50,6 +50,7 @@ function Home() {
             isError={isError}
             error={error}
           />
+
           <RelatedNews isLoading={isLoading} />
           <Footer isLoading={isLoading} />
         </div>

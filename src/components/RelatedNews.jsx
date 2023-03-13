@@ -38,7 +38,7 @@ function RelatedNews({ isLoading }) {
   if (isLoading) return <></>;
 
   return (
-    <div className="flex flex-col place-content-center xl:pr-24 xl:pl-24 2xl:mt-40 2xl:mb-40  ">
+    <div className="relative flex flex-col place-content-center xl:pr-24 xl:pl-24 2xl:mt-40  2xl:mb-40 ">
       <div className="divider mt-5 mb-5 p-2 md:hidden"> </div>
 
       <div className=" relative left-2 max-w-fit rounded bg-primary p-2 font-bold hover:bg-primary-focus">
@@ -79,6 +79,12 @@ function RelatedNews({ isLoading }) {
           Load More
         </button>
       </div>
+      <button
+        className=" absolute right-2 bottom-2 rounded-full bg-primary p-1 text-[10px] text-primary-content opacity-95 hover:opacity-90 sm:right-2"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        Back to Top
+      </button>
     </div>
   );
 }

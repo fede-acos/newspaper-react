@@ -12,6 +12,7 @@ function NavBarMobile({
   user,
   handleClickLogIn,
   handleClickSignUp,
+  logOut,
 }) {
   const { section } = useSelector((state) => state.section);
   return (
@@ -60,8 +61,13 @@ function NavBarMobile({
           </li>
         ))}
         {user ? (
-          <li className="text-base-50 w-full bg-base-300 p-2 text-center text-lg sm:text-2xl md:hidden">
-            {user.email}
+          <li className="w-full">
+            <button
+              onClick={logOut}
+              className="btn-primary mt-2 w-full p-2 text-center text-lg sm:text-2xl md:hidden"
+            >
+              Log Out
+            </button>
           </li>
         ) : (
           <>

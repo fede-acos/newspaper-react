@@ -4,14 +4,7 @@ function Footer({ isLoading }) {
   if (isLoading) return <></>;
 
   return (
-    <footer className="footer footer-center relative rounded bg-base-200 p-10 text-base-content">
-      <button
-        className="btn absolute top-0 left-0"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      >
-        Go to top
-      </button>
-
+    <footer className="footer footer-center relative rounded bg-base-200 p-10 pt-14 text-base-content  sm:pt-10">
       <div className="grid grid-flow-col gap-4">
         <a className="link-hover link">About us</a>
         <a className="link-hover link">Contact</a>

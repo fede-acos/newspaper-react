@@ -50,6 +50,7 @@ const Navbar = ({ user, logOut }) => {
         user={user}
         handleClickLogIn={handleClickLogIn}
         handleClickSignUp={handleClickSignUp}
+        logOut={logOut}
       />
       <div className="flex w-full justify-center pt-8 pb-6 2xl:pb-0">
         <a className=" w-60 sm:w-80 xl:w-96  ">
