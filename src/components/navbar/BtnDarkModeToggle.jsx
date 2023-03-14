@@ -17,7 +17,7 @@ function BtnDarkModeToggle({ style }) {
     <>
       <div className={style}>
         <button data-set-theme={theme} data-act-class="ACTIVECLASS">
-          <label className="swap swap-flip">
+          <label className="swap btn-ghost swap-flip btn-square btn h-7 self-center">
             <input type="checkbox" />
             <svg
               onClick={() =>
