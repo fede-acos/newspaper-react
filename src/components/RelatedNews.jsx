@@ -42,7 +42,7 @@ function RelatedNews({ isLoading }) {
       <div className="divider mt-5 mb-5 p-2 md:hidden"> </div>
 
       <div className=" relative left-2 max-w-fit rounded bg-primary p-2 font-bold hover:bg-primary-focus">
-        <h1 className="text-sm  text-primary-content ">RELATED NEWS</h1>
+        <h1 className="text-sm  text-white ">RELATED NEWS</h1>
       </div>
       {relatedNews?.map((news) => {
         return (

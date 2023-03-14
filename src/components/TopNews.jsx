@@ -27,7 +27,7 @@ function TopNews({ data, isLoading, isError, error }) {
         <MainArticle news={mainNews} />
         <div>
           <div className=" relative left-2 max-w-fit rounded bg-primary p-2 font-bold hover:bg-primary-focus">
-            <h1 className="text-sm  text-primary-content ">TOP NEWS</h1>
+            <h1 className="text-sm  text-white ">TOP NEWS</h1>
           </div>
           {sideNews.map((news) => {
             return <IndividualNews key={news.url} news={news} />;
