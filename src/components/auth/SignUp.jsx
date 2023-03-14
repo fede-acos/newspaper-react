@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase-config";
 import Footer from "../Footer";
+import Logo from "../navbar/Logo";
 import NavbarAuth from "./NavbarAuth";
 
 function SignUp() {
@@ -37,61 +38,63 @@ function SignUp() {
   };
 
   return (
-    <div className="min-h-screen bg-base-200">
+    <>
       <NavbarAuth />
-      <div className="hero  mt-16 mb-20 ">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="card w-full max-w-sm flex-shrink-0 bg-base-100 shadow-2xl">
-            <form onSubmit={handleSubmit} className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Email"
-                  className="input-bordered input"
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Password"
-                  required
-                  className="input-bordered input"
-                />
-                <label className="label">
-                  <a
-                    href="#"
-                    onClick={handleClick}
-                    className="link-hover label-text-alt link"
-                  >
-                    Have an Account Already? Log In
-                  </a>
-                </label>
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn-primary btn">Sign Up</button>
-              </div>
-              {error ? (
-                <span className="text-error">
-                  Password should be at least 6 characters
-                </span>
-              ) : null}
-            </form>
+
+      <div className=" flex min-h-screen w-full flex-col items-center  bg-base-200  md:justify-center">
+        <div className=" bg-base-100  p-14 shadow-2xl">
+          <div className="mb-8 w-60">
+            <Logo />
           </div>
+          <form onSubmit={handleSubmit}>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+                className="input-bordered input"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                required
+                className="input-bordered input"
+              />
+              <label className="label">
+                <a
+                  href="#"
+                  onClick={handleClick}
+                  className="link-hover label-text-alt link"
+                >
+                  Have an Account Already? Log In
+                </a>
+              </label>
+            </div>
+            <div className="form-control mt-6">
+              <button className="btn-primary btn">Login</button>
+            </div>
+            {error ? (
+              <span className="text-error">
+                Password should be at least 6 characters
+              </span>
+            ) : null}
+          </form>
         </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 }
 

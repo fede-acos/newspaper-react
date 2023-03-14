@@ -60,7 +60,7 @@ function RelatedNews({ isLoading }) {
                   src={news.multimedia[1].url}
                   alt={news.multimedia[0].caption}
                 />
-                <div className="absolute bottom-0 left-0 rounded bg-neutral p-1.5 font-bold hover:bg-neutral-focus">
+                <div className="absolute bottom-0 left-0 rounded bg-primary p-1.5 font-bold hover:bg-primary-focus">
                   <h1 className="text-sm text-white ">
                     {news.section.toUpperCase()}
                   </h1>
