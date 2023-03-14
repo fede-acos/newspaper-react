@@ -4,18 +4,11 @@ import Logo from "../navbar/Logo";
 
 function NavbarAuth() {
   return (
-    <div className="navbar bg-base-100">
-      <div className="flex-1">
-        <a href="/" className="btn-ghost btn w-60 pb-4 text-2xl">
-          <Logo />
-        </a>
+    <nav className="flex w-full justify-end bg-base-200 pb-4 sm:pb-0">
+      <div className="btn-ghost btn-square btn mr-3 mt-3">
+        <BtnDarkModeToggle />
       </div>
-      <div className="flex-none">
-        <div className="btn-ghost btn-square btn">
-          <BtnDarkModeToggle />
-        </div>
-      </div>
-    </div>
+    </nav>
   );
 }
 
