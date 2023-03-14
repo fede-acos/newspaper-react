@@ -80,7 +80,7 @@ function RelatedNews({ isLoading }) {
         </button>
       </div>
       <button
-        className=" absolute right-2 bottom-2 rounded-full bg-primary p-1 text-[10px] text-primary-content opacity-95 hover:opacity-90 sm:right-2"
+        className=" absolute right-2 bottom-2 rounded-full bg-primary p-1 text-[10px] text-primary-content opacity-95 hover:opacity-90 sm:right-2 sm:p-2 sm:text-xs xl:text-xl"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
         Back to Top
