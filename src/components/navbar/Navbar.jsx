@@ -31,9 +31,12 @@ const Navbar = ({ user, logOut }) => {
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("touchend", handleClickOutside);
+    document.addEventListener("wheel", handleClickOutside);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("touchend", handleClickOutside);
+      document.addEventListener("wheel", handleClickOutside);
     };
   }, []);
 
@@ -95,7 +98,7 @@ const Navbar = ({ user, logOut }) => {
         </div>
         {user ? (
           <div className=" navbar-end mr-4 hidden md:flex 2xl:w-[40%]">
-            <div className="dropdown dropdown-bottom   dropdown-end dropdown-hover ">
+            <div className="dropdown-bottom dropdown-end   dropdown-hover dropdown ">
               <label className="   btn-ghost btn-square btn   ">
                 <svg
                   viewBox="0 0 24 24"
